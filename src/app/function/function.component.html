@@ -1,0 +1,80 @@
+<app-general-layout></app-general-layout>
+<div class="header ">
+    <div class="container-fluid">
+
+        <h2 style="text-align:center"> Gérer Les Functions des utlisateurs </h2>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
+                <li class="breadcrumb-item" style="text-align:center"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item" style="text-align:center"><a>Functions</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Gérer les Functions</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="container-fluid mt-2">
+    <div class="Center">
+        <div class="card">
+            <div class="card-header">
+                <form>
+                    <div class="row align-items-center">
+                        <div class="col-4 text-left">
+                            <a (click)="addFunction()" class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
+                                    class="fas fa-plus-circle"></i></span> Ajouter un Function </a>
+                        </div>
+
+                        <div class="col-4">
+                            <input type="text" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" data-sort="status" class="sort"> Nom du Function </th>
+                            <th scope="col" data-sort="status" class="sort"> Label du Function </th>
+
+                            <th scope="col" data-sort="status" class="sort">supprimer</th>
+                            <th scope="col" data-sort="status" class="sort">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list" *ngFor="let c of  functioofusers  |   paginate : { id: 'ActionTypePagination',itemsPerPage: 5, currentPage: p }">
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <ngx-avatar></ngx-avatar>
+                                    <span class="ml-4">{{c.name}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <ngx-avatar></ngx-avatar>
+                                    <span class="ml-4">{{c.label}}</span>
+                                </div>
+                            </td>
+
+                            <td class="d-flex ">
+                                <div class="btn-group">
+                                    <br>
+                                    <button type="button" (click)="delete(c.idFunction)" class="btn btn-sm btn-secondary"><i
+                                        class="fas fa-trash text-danger"></i></button>
+
+
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" (click)="open(c.idFunction,c.name)" class=" btn btn-sm btn-secondary ">
+                                voirutlisateurs</button>
+                                    <button type="button" (click)="adduser(c.idFunction,c.name)" class=" btn btn-sm btn-secondary ">
+                                    Ajouter utlisateur </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>

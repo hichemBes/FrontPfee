@@ -1,0 +1,84 @@
+<app-general-layout></app-general-layout>
+<div class="header ">
+    <div class="container-fluid">
+
+
+
+
+        <h2 style="text-align:center"> Gérer Nature Dossier </h2>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
+                <li class="breadcrumb-item" style="text-align:center"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item" style="text-align:center"><a>Nature</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Dossier </li>
+            </ol>
+        </nav>
+
+
+
+
+    </div>
+</div>
+
+<div class="container-fluid mt-2">
+    <div class="Center">
+        <div class="card">
+            <div class="card-header">
+                <form>
+                    <div class="row align-items-center">
+                        <div class="col-4 text-left">
+                            <a (click)="addcategorie()" class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
+                                    class="fas fa-plus-circle"></i></span> Ajouter  Nature Dossier  </a>
+                        </div>
+
+                        <div class="col-4">
+                            <input type="text" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" data-sort="status" class="sort"> Nature Dossier </th>
+
+                            <th scope="col" data-sort="status" class="sort">Suprimer</th>
+                            <th scope="col" data-sort="status" class="sort">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list" *ngFor="let c of categories| tableFilter:searchForm.value | paginate : { id: 'ActionTypePagination',itemsPerPage: 4, currentPage: p }">
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <ngx-avatar></ngx-avatar>
+                                    <span class="ml-4">{{c.categorytype}}</span>
+                                </div>
+                            </td>
+
+                            <td class="d-flex ">
+                                <div class="btn-group">
+
+                                    <button type="button" (click)="delete(c.categoryId)" class="btn btn-sm btn-secondary"><i
+                                        class="fas fa-trash text-danger"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" (click)="open(c.categoryId,c.categorytype)" class=" btn btn-sm btn-secondary ">
+                                    voirFunction</button>
+                                <button type="button" (click)="open2(c.categoryId,c.categorytype)" class=" btn btn-sm btn-secondary ">
+                                        Ajouter Function </button>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf="categories .length>2">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Gérer les Utilisateurs</span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="card-body">
+
+        <form [formGroup]="userForm" autocomplete="off" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label>Utilisateur </label>
+                <ng-select [items]="resultedUserList" bindLabel="fullName" labelForId="matricule" bindValue="userID"
+                    (search)=" onSearchChange($event)" formControlName="userID">
+                </ng-select>
+            </div>
+
+            <div class="form-group">
+                <label> Role</label>
+                <ng-select [items]="AppRoleList" bindLabel="name" bindValue="id" [multiple]="false"
+                    formControlName="appRoleId">
+                </ng-select>
+            </div>
+
+            <div class=" d-flex flex-row-reverse">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button>
+                &nbsp;
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                
+            </div>
+        </form>
+
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+<app-general-layout>
+
+
+</app-general-layout>
+
+
+<div class="header ">
+    <div class="container-fluid">
+
+
+
+
+        <h2 style="text-align:center"> Gérer Les Demandes </h2>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="Center">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
+                <li class="breadcrumb-item" style="text-align:center"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item" style="text-align:center"><a>Demandes</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Gérer les Demandes </li>
+            </ol>
+        </nav>
+
+
+
+
+    </div>
+</div>
+<style>
+    .Center {
+        position: fixed;
+        top: 35%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+    }
+    
+    .div {
+        position: fixed;
+        top: 35%;
+        left: 50%;
+        margin-top: -60px;
+        margin-left: -100px;
+    }
+</style>
+<div class="div">
+    <br>
+    <button type="button" class="btn btn-primary" (click)="popupRequest()">Ajouter Demande</button>
+
+    <button type="button" class="btn btn-primary" (click)="popupview()">Voir Demande </button>
+    <button type="button" class="btn btn-primary" (click)="popupall()" *ngIf="verif"> Voir tous les Demandes </button>
+
+</div>

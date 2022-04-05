@@ -1,0 +1,94 @@
+<div class="header  ">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-black d-inline-block mb-0"> Gérer les Projets </h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a>Projets</a></li>
+                            <li aria-current="page" class="breadcrumb-item active"> Gérer les Projets </li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- <div class="col-lg-6 col-7">
+                    <button type="button" class="d-lg-block d-none navbar-toggler float-right mr--4" id="filterPanel" ng-reflect-breakpoint="lg" (click)="openPanel()"><span class="fas fa-list"></span></button>
+                </div> -->
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="container-fluid mt-1">
+    <div class="card">
+        <div class="card-header">
+            <form [formGroup]="searchForm">
+                <div class="row align-items-center">
+                    <div class="col-4 text-left">
+                        <a (click)=" AddProject()" class="btn btn-outline-primary"><span class="btn-inner--icon"><i
+                                    class="fas fa-plus-circle"></i></span> Ajouter un projet </a>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" placeholder="rechercher" formControlName="projectName">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" data-sort="status" class="sort"> Nom du projet </th>
+                        <th scope="col" data-sort="status" class="sort">Date de début</th>
+                        <th scope="col" data-sort="status" class="sort">Date de clôture</th>
+                        <th scope="col" data-sort="status" class="sort">Active</th>
+                        <th scope="col" data-sort="status" class="sort">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    <tr
+                        *ngFor="let project of listProjects| tableFilter:searchForm.value | paginate : { id: 'missionTypePagination',itemsPerPage: 15, currentPage: p }">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <ngx-avatar [name]="project.projectName" [bgColor]="project.color"></ngx-avatar>
+                                <span class="ml-4">{{project.projectName}}</span>
+                            </div>
+                        </td>
+                        <td>{{project.startDate |date: 'dd MMMM yyyy'}}</td>
+                        <td>{{project.closedDate |date: 'dd MMMM yyyy'}}</td>
+                        <td>
+
+                            <span class="badge badge-info badge-md " *ngIf="project.activeState">Active</span>
+                            <span class="badge badge-danger badge-md" *ngIf="! project.activeState">Non active</span>
+                        </td>
+                        <td class="d-flex ">
+                            <div class="btn-group"> 
+                                <button type="button" class="btn btn-sm btn-secondary" (click)="edit(project)"><i
+                                        class="fas fa-wrench text-primary"></i></button>
+                                <button type="button" class="btn btn-sm btn-secondary"
+                                    (click)="delete(project.projectId)"><i
+                                        class="fas fa-trash text-danger"></i></button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <pagination-controls id="missionTypePagination" class="my-pagination text-right" (pageChange)="p = $event"
+                previousLabel="Prec" nextLabel="Suiv" *ngIf="listProjects.length>15">
+            </pagination-controls>
+        </div>
+    </div>
+</div>

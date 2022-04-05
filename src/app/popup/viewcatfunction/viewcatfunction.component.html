@@ -1,0 +1,71 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Gérer les Function </span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+
+        <!-- </div>
+        <div class="card-body">
+            <div>
+                <h1>les utlisateurs du {{fromParent.name}} </h1>
+                <ul *ngFor="let c of  fonctiouser">
+                    <li>
+                        {{c.username}}
+                        <div class="C">
+                            <button type="button" style="-ms-flex-item-align: end;" (click)="delete(c.idFunctionofUser)" class="btn btn-sm btn-secondary"><i
+                            class="fas fa-trash text-danger"></i></button>
+                        </div>
+                    </li>
+    
+    
+    
+                </ul>
+            </div> -->
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" data-sort="status" class="sort"> Nom Function </th>
+                        <th scope="col" data-sort="status" class="sort"> Label </th>
+                        <th scope="col" data-sort="status" class="sort">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="list" *ngFor="let c of  fonctioncategories  | paginate : { id: 'ActionTypePagination',itemsPerPage: 5, currentPage: p }">
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <ngx-avatar></ngx-avatar>
+                                <span>{{c.functionName}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <ngx-avatar></ngx-avatar>
+                                <span> {{c.functionLabel}}</span>
+                            </div>
+                        </td>
+
+                        <td class="d-flex ">
+                            <div class="btn-group">
+
+                                <button type="button" (click)="delete(c.categoryFunctionID)" class="btn btn-sm btn-secondary"><i
+                                        class="fas fa-trash text-danger"></i></button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div class="card-footer">
+            <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf=" fonctioncategories .length>1">
+            </pagination-controls>
+        </div>
+    </div>

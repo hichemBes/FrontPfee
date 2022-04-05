@@ -1,0 +1,118 @@
+<div class="header ">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-12">
+                    <h6 class="h2 text-black d-inline-block mb-0"> Gérer Les missions </h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a>Missions</a></li>
+                            <li aria-current="page" class="breadcrumb-item active"> Gérer les missions </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt-12">
+        <div class="card mt-12 ">
+            <div class="row justify-content-start">
+                <div class="form-group col-sm">
+           
+
+            <form [formGroup]="searchForm">
+                <prE>{{searchForm.value|json}}</prE>
+         
+
+
+                <div class="form-group col-4 pl-4">
+                    <label>Utilisateur </label>
+                    <select class="form-control" formControlName="fk_User" >
+                
+                    
+                    <option value="1">-Pas de Sélection-</option>
+                    <option *ngFor="let colab  of listCollaborateurs " [value]="colab.userUserName">{{colab.userFullName}}</option>            
+                    </select>
+                </div>
+
+
+
+                <div class="form-group col-4 ">
+                    <label>Filiale </label>
+                    <ng-select [items]="listSubsidiaries" bindLabel="label" bindValue="subsidiaryId">
+                    </ng-select>
+                </div>
+                <div class="form-group col-4 pr-4">
+                    <label>Type de mission </label>
+                    <ng-select [items]="typesMissions" bindLabel="missionTypeName"  bindValue="missionTypeId">
+                    </ng-select>
+                </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="card mt-4">
+            <div class="card-header">
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-left">
+                        <a (click)=" AddMission()" class="btn btn-outline-primary"><span class="btn-inner--icon"><i
+                                    class="fas fa-plus-circle"></i></span> Ajouter une mission </a>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" placeholder="rechercher"
+                           >
+                    </div>
+                </div>
+
+
+            </div>
+       <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" data-sort="status" class="sort"> Type de mission </th>
+                        <th scope="col" data-sort="status" class="sort">Utilisateur</th>
+                        <th scope="col" data-sort="status" class="sort">mission</th>
+
+                    </tr>
+                </thead>
+                <tbody class="list">
+             
+                    <tr
+                        *ngFor="let item of listMissions| tableFilter:searchForm.value | paginate : { id: 'missionPagination',itemsPerPage: 15, currentPage: p }">
+   
+
+                        <td>{{item.messionDescription}}</td>
+                        <td>{{item.fullName}}</td>
+
+                        <td class="d-flex ">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-secondary" (click)="edit(item)"><i
+                                        class="fas fa-wrench text-primary"></i></button>
+                               
+                                        <button type="button" class="btn btn-sm btn-secondary"
+                                    (click)="delete(item.missionId)"><i
+                                        class="fas fa-trash text-danger"></i></button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+            <div class="card-footer">
+                <pagination-controls id="missionPagination" class="my-pagination text-right" (pageChange)="p = $event"
+                previousLabel="Prec" nextLabel="Suiv" *ngIf="listMissions.length>15">
+            </pagination-controls> 
+            </div>
+        </div>
+
+</div>

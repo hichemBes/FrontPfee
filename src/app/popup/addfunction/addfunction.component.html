@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Gérer les Functions </span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+
+    </div>
+    <div class="card-body">
+
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+            <div class="form-group">
+                <label>Function </label>
+                <input type="text" class="form-control" placeholder="NomFunction" name="name" #name="ngModel" ngModel required>
+                <br>
+                <input type="text" class="form-control" placeholder="label" name="label" #label="ngModel" ngModel required>
+
+            </div>
+
+            <div class=" d-flex flex-row-reverse">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
+
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>

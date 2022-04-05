@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Gérer les missions </span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="card-body">
+
+        <form [formGroup]="missionForm" autocomplete="off" (ngSubmit)="onSubmit()">
+            <pre>{{missionForm.value|json}}</pre>
+            <div class="row">
+                
+                <div class="form-group col-6">
+                    <label>Type de mission </label>
+                    <ng-select [items]="typesMissions" bindLabel="missionTypeName" bindValue="missionTypeId"
+                    formControlName="fk_MissionType">
+                    </ng-select>
+                </div>
+
+                <div class="form-group col-6">
+                    <label>Collaborateur </label>
+                    <ng-select [items]="listCollaborateurs" bindLabel="userFullName" bindValue="userUserName"
+                        formControlName="fk_User">
+                    </ng-select>
+                </div>
+                <div class="form-group col-6">
+                    <label>Filiale </label>
+                    <ng-select [items]="listSubsidiaries" bindLabel="label" bindValue="subsidiaryId"
+                        formControlName="fk_Filliale">
+                    </ng-select>
+                </div>
+                <div class="form-group col-6">
+                    <label>Date de mission </label>
+                    <input type="date" class="form-control" formControlName="startDate">
+                </div>
+               
+            
+
+                <div class="form-group col-6">
+                    <label>Déscription </label>
+                    <input type="text" class="form-control" formControlName="messionDescription">
+                </div>
+            </div>
+
+            <div class=" d-flex flex-row-reverse">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button>
+                &nbsp;&nbsp;
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

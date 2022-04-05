@@ -1,0 +1,140 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Gérer les projets </span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="card-body">
+      
+        <form [formGroup]="projectForm" autocomplete="off" (ngSubmit)="onSubmit()">
+           <pre>{{projectForm.value|json}}</pre>
+            <div class="form-group">
+                <label>Nom du projet </label>
+                <input type="text"  class="form-control" formControlName="projectName">              
+            </div>
+            <div class="form-group">
+              <label>Déscription du projet </label>
+              <input type="text"  class="form-control" formControlName="projectDescription">              
+          </div>
+          <div class="form-group">
+            <label>Vis à vis </label>
+            <ng-select [items]="resultedUserList" bindLabel="fullName" labelForId="matricule" multiple="true" bindValue="userID"
+                (search)=" onSearchChange($event)" (change)="onSelectVisAVis($event)">
+            </ng-select>
+        </div>
+          <div class="form-group">
+            <label>Date de début </label>
+            <input type="date"  class="form-control" formControlName="startDate">              
+        </div>
+        <div class="form-group">
+          <label>Date prévue de clôture </label>
+          <input type="date"  class="form-control" formControlName="closedDate">              
+      </div> 
+      <div class="form-group">
+        <label>Status </label> &nbsp; &nbsp; &nbsp; &nbsp;
+        <mat-slide-toggle class="example-margin" color="primary" formControlName="activeState"  class="p-2">
+         
+      </mat-slide-toggle>         
+    </div> 
+
+            <div class="form-group">     
+              <label>Couleur </label>           
+            <div class="row gutters-xs">
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#0178bc"
+                    formControlName="color">
+                  <span class="colorinput-color bg-primary"></span>
+                </label>
+              </div>
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#fb6340"
+                    formControlName="color">
+                  <span class="colorinput-color bg-warning"></span>
+                </label>
+              </div>
+              <div class="col-auto" >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#f5365c"
+                    formControlName="color">
+                  <span class="colorinput-color bg-danger"></span>
+                </label>
+              </div>
+              <div class="col-auto" >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#2dce89"
+                    formControlName="color">
+                  <span class="colorinput-color bg-success"></span>
+                </label>
+              </div>
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#212529"
+                    formControlName="color">
+                  <span class="colorinput-color bg-dark"></span>
+                </label>
+              </div>
+              
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#8965e0"
+                    formControlName="color">
+                  <span class="colorinput-color bg-purple"></span>
+                </label>
+              </div>
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#5603ad"
+                    formControlName="color">
+                  <span class="colorinput-color bg-indigo"></span>
+                </label>
+              </div>
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#f3a4b5"
+                    formControlName="color">
+                  <span class="colorinput-color bg-pink"></span>
+                </label>
+              </div>
+           
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#ffd600"
+                    formControlName="color">
+                  <span class="colorinput-color bg-yellow"></span>
+                </label>
+              </div>
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#2bffc6"
+                    formControlName="color">
+                  <span class="colorinput-color bg-cyan"></span>
+                </label>
+              </div>
+              <div class="col-auto " >
+                <label class="colorinput rounded">  
+                  <input name="color" type="radio" class="colorinput-input rounded" value="#11cdef"
+                    formControlName="color">
+                  <span class="colorinput-color bg-teal"></span>
+                </label>
+              </div>
+
+              
+            </div>
+            </div>
+
+           
+            <div class=" d-flex flex-row-reverse">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button>
+                &nbsp;&nbsp;
+
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                
+            </div>
+        </form>
+
+    </div>
+
+</div>

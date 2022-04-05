@@ -1,0 +1,81 @@
+<div class="header ">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-black d-inline-block mb-0"> Gérer les utilisateurs </h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a>Utilisateurs</a></li>
+                            <li aria-current="page" class="breadcrumb-item active"> Gérer les utilisateurs </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-1">
+    <div class="card">
+        <div class="card-header">
+            <form [formGroup]="searchForm">
+                <div class="row align-items-center">
+                    <div class="col-4 text-left">
+                        <a (click)=" AddUser()" class="btn btn-outline-primary"><span class="btn-inner--icon"><i
+                                    class="fas fa-plus-circle"></i></span> Ajouter un utilisateur </a>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" placeholder="rechercher" formControlName="userFullName">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" data-sort="status" class="sort"> Utilisateur </th>
+                        <th scope="col" data-sort="status" class="sort">Role</th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    <tr
+                        *ngFor="let item of Listusers| tableFilter:searchForm.value | paginate : { id: 'UserPagination',itemsPerPage: 15, currentPage: p }">
+                        <!-- {{item|json}} -->
+
+                        <td>
+                            <!-- <figure class="avatar mr-2 text-white text-uppercase " data-initial="TM">
+                            </figure> -->
+                            <!-- <pre>{{item.userFullName[0]+ item.userFullName[item.userFullName.indexOf(' ') + 1] |json}}</pre> -->
+                            {{item.userFullName}}
+                        </td>
+                        <td>
+                            {{item.userApplicationRoles[0]?.roleName}}
+                        </td>
+
+                        <!-- <td class="d-flex flex-row-reverse">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-secondary" (click)="editUser(item)"><i
+                                        class="fas fa-wrench text-primary"></i></button>
+                                <button type="button" class="btn btn-sm btn-secondary" (click)="deleteUser(item)"><i
+                                        class="fas fa-trash text-danger"></i></button>
+                            </div>
+                        </td> -->
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <pagination-controls id="UserPagination" class="my-pagination text-right" (pageChange)="p = $event"
+                previousLabel="Prec" nextLabel="Suiv" *ngIf="Listusers.length>15">
+            </pagination-controls>
+        </div>
+    </div>
+</div>

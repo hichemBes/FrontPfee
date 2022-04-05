@@ -1,0 +1,44 @@
+<app-general-layout>
+
+</app-general-layout>
+
+<div class="header ">
+    <div class="container-fluid">
+
+
+
+
+        <h2 style="text-align:center"> Gérer Les utlisateurs </h2>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
+                <li class="breadcrumb-item" style="text-align:center"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item" style="text-align:center"><a>utlisateurs</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Gérer les utlisateurs </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="center">
+
+    <table class="uk-table uk-table-striped">
+        <thead>
+            <tr>
+                <th>nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Filliale</th>
+                <th>AjouterRole</th>
+                <th>VoirRoles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let character of tab">
+                <td>{{ character.userName}}</td>
+                <td>{{ character.email}}</td>
+                <td>{{character.filliale}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="open( character.userName)">AjouterRole</button></td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="ViewRole (character.userName)">VoirRoles</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,74 @@
+<div class="header ">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-12">
+                    <h6 class="h2 text-black d-inline-block mb-0"> Gérer Les Types des taches </h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a>Types des taches</a></li>
+                            <li aria-current="page" class="breadcrumb-item active"> Gérer les Types des taches </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-1">
+    <div class="card">
+        <div class="card-header">
+            <form [formGroup]="searchForm">
+                <div class="row align-items-center">
+                    <div class="col-4 text-left">
+                        <a (click)="AddTaskType()" class="btn btn-outline-primary"><span class="btn-inner--icon"><i
+                                    class="fas fa-plus-circle"></i></span> Ajouter un type de tache </a>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" placeholder="rechercher"
+                            formControlName="taskTypeName">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" data-sort="status" class="sort"> Type de tache </th>
+                        <th scope="col" data-sort="status" class="sort">action</th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    <tr
+                        *ngFor="let item of listTaskTypes| tableFilter:searchForm.value | paginate : { id: 'taskTypePagination',itemsPerPage: 15, currentPage: p }">
+
+
+                        <td>{{item.taskTypeName}}</td>
+                        <td class="d-flex ">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-secondary" (click)="edit(item)"><i
+                                        class="fas fa-wrench text-primary"></i></button>
+                                <button type="button" class="btn btn-sm btn-secondary"
+                                    (click)="delete(item.taskTypeId)"><i
+                                        class="fas fa-trash text-danger"></i></button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <pagination-controls id="taskTypePagination" class="my-pagination text-right" (pageChange)="p = $event"
+                previousLabel="Prec" nextLabel="Suiv" *ngIf="listTaskTypes.length>15">
+            </pagination-controls>
+        </div>
+    </div>
+</div> 
