@@ -14,7 +14,5 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.verif = this.sa.Role()
-
-
   }
 }

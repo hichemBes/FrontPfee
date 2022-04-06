@@ -13,7 +13,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class RequestComponent implements OnInit {
   tab: any;
+  p: any;
   verif = false
+  search: any
 
   constructor(private route: Router, private req: RequestService, private sa: UserauthService, private matDialog: MatDialog) {
     if (!localStorage.getItem('Token')) {
@@ -33,6 +35,13 @@ export class RequestComponent implements OnInit {
       let request: Req
 
       request = this.tab
+      for (var i in this.tab) {
+        if (this.tab[i].status == 'InProgress') {
+          this.tab[i].status = 'En Cours '
+        }
+      }
+
+      console.log(this.tab)
 
     }, error => {
       console.log(error)
@@ -50,6 +59,22 @@ export class RequestComponent implements OnInit {
 
 
 
+
+  }
+
+  addDemande() {
+
+  }
+  Search() {
+
+    if (this.search == "") {
+      this.ngOnInit();
+
+    } else {
+      this.tab = this.tab.filter(res => {
+        return res.status.toLowerCase().match(this.search.toLowerCase())
+      })
+    }
 
   }
 }

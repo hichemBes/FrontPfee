@@ -121,7 +121,7 @@ export class CategoriesComponent implements OnInit {
   }
   Search() {
 
-    console.log(this.search)
+
     if (this.search == "") {
       this.ngOnInit();
 
