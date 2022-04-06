@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'allusers', component: UsersComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'organisme', component: OrganismeComponent },
-  { path: 'request', component: RequestComponent },
+  { path: 'allrequest', component: RequestComponent },
   { path: 'functionofuser', component: FunctionComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 

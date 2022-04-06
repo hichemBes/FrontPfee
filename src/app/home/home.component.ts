@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   role: any;
+  username: any;
   constructor(private sa: UserauthService, private route: Router) {
 
     if (this.sa.Role() == true) {
@@ -32,6 +33,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('username')
+    console.log("username ", this.username)
   }
 
 }

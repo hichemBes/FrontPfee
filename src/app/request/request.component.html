@@ -8,7 +8,7 @@ div class="header ">
     <h2 style="text-align:center"> Demandes </h2>
     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
         <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
-            <li class="breadcrumb-item" style="text-align:center"><a href="#"><i class="fas fa-home"></i></a></li>
+            <li class="breadcrumb-item" style="text-align:center"><a href="/Home"><i class="fas fa-home"></i></a></li>
             <li class="breadcrumb-item" style="text-align:center"><a>Demandes</a></li>
             <li aria-current="page" class="breadcrumb-item active"> Gérer les Demandes</li>
         </ol>
@@ -24,13 +24,13 @@ div class="header ">
             <div class="card-header">
                 <form>
                     <div class="row align-items-center">
-                        <div class="col-4 text-left">
+                        <div class="col-4 text-left" *ngIf="!verif">
                             <a (click)="addDemande()" class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
                                     class="fas fa-plus-circle"></i></span> Ajouter un Demande  </a>
                         </div>
 
                         <div class="col-4">
-                            <input type="text" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
+                            <input type="text" style="float:inline-end" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
                         </div>
                     </div>
                 </form>
@@ -42,7 +42,7 @@ div class="header ">
                         <tr>
                             <th scope="col" data-sort="status" class="sort"> Statut de Demande </th>
                             <th scope="col" data-sort="status" class="sort"> Type de demande </th>
-                            <th scope="col" data-sort="status" class="sort"> Organisme</th>
+                            <th scope="col" data-sort="status" class="sort"> Organisme </th>
 
                             <th scope="col" data-sort="status" class="sort">Actions</th>
                         </tr>
@@ -81,7 +81,7 @@ div class="header ">
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer">
+            <div class="card-footer" *ngIf="verif">
                 <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv">
                 </pagination-controls>
             </div>

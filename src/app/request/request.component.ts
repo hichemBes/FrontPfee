@@ -27,6 +27,7 @@ export class RequestComponent implements OnInit {
   }
   ngOnInit(): void {
     this.verif = this.sa.Role()
+    console.log(this.verif)
     this.getallrequest()
   }
   getallrequest() {

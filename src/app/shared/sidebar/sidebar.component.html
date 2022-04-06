@@ -99,7 +99,7 @@
                         <i class="fas fa-desktop"></i> Tableau de bord
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="verif">
                     <a routerLinkActive="active" routerLink="/organisme" class="nav-link">
                         <i class="fas fa-file-alt"></i> Organismes
                     </a>
@@ -118,8 +118,8 @@
             <!-- Navigation -->
 
             <ul class="navbar-nav mb-md-3">
-                <li class="nav-item" *ngIf="verif">
-                    <a routerLinkActive="active" class="nav-link" routerLink="/request">
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" routerLink="/allrequest">
                         <i class="fas fa-users">
                             
                         </i>Liste des Demandes
@@ -128,7 +128,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="verif">
                     <a routerLinkActive="active" class="nav-link" routerLink="/categories">
                         <i class="fas fa-list">
                             
