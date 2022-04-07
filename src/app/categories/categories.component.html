@@ -48,12 +48,12 @@
                             <th scope="col" data-sort="status" class="sort">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="list" *ngFor="let c of categories| tableFilter:searchForm.value | paginate : { id: 'ActionTypePagination',itemsPerPage: 4, currentPage: p }">
+                    <tbody class="list" *ngFor="let c of categories| tableFilter:searchForm.value | paginate : { id: 'ActionTypePagination',itemsPerPage: 3, currentPage: p }">
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <ngx-avatar></ngx-avatar>
-                                    <span class="ml-4">{{c.categorytype}}</span>
+                                    <span class="ml-2">{{c.categorytype}}</span>
                                 </div>
                             </td>
 
@@ -65,10 +65,12 @@
                                 </div>
                             </td>
                             <td>
-                                <button type="button" (click)="open(c.categoryId,c.categorytype)" class=" btn btn-sm btn-secondary ">
+
+                                <button type="button" (click)="open(c.categoryId,c.categorytype)" class="btn btn-outline-primary">
                                     voirFunction</button>
-                                <button type="button" (click)="open2(c.categoryId,c.categorytype)" class=" btn btn-sm btn-secondary ">
+                                <button type="button" (click)="open2(c.categoryId,c.categorytype)" class="btn btn-outline-primary">
                                         Ajouter Function </button>
+
                             </td>
 
 

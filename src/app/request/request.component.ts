@@ -78,4 +78,8 @@ export class RequestComponent implements OnInit {
     }
 
   }
+  btnClick(id: any) {
+    this.route.navigateByUrl('request/details:' + id);
+
+  }
 }

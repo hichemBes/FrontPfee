@@ -18,11 +18,12 @@
                 <p class="alert alert-danger" *ngIf="password.errors?.required && password.touched">password required </p>
             </div>
         </div>
-        <button type="submit" class="btn btn-success" [disabled]="f.invalid">Login</button>
 
 
         <div class="alert alert-danger" *ngIf="messageErorr">{{messageErorr}}</div>
+        <button type="submit" class="btn btn-outline-primary" [disabled]="f.invalid">Login</button>
+
     </form>
     <br>
-    <button type="submit" class="btn bg-gradient-green" routerLink="/register">Register</button>
+    <button type="submit" class="btn btn-outline-primary" routerLink="/register">Register</button>
 </div>

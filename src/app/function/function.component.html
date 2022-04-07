@@ -2,14 +2,21 @@
 <div class="header ">
     <div class="container-fluid">
 
-        <h2 style="text-align:center"> Gérer Les Functions des utlisateurs </h2>
+
+
+
+        <h2 style="text-align:center"> Gérer Nature Dossier </h2>
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
                 <li class="breadcrumb-item" style="text-align:center"><a href="#"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item" style="text-align:center"><a>Functions</a></li>
-                <li aria-current="page" class="breadcrumb-item active"> Gérer les Functions</li>
+                <li class="breadcrumb-item" style="text-align:center"><a>Nature</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Dossier </li>
             </ol>
         </nav>
+
+
+
+
     </div>
 </div>
 <div class="container-fluid mt-2">
@@ -67,12 +74,13 @@
 
                             </td>
                             <td>
-                                <div class="btn-group">
-                                    <button type="button" (click)="open(c.idFunction,c.name)" class=" btn btn-sm btn-secondary ">
+                                <ngx-avatar></ngx-avatar>
+
+                                <button type="button" (click)="open(c.idFunction,c.name)" class="btn btn-outline-primary">
                                 voirutlisateurs</button>
-                                    <button type="button" (click)="adduser(c.idFunction,c.name)" class=" btn btn-sm btn-secondary ">
+                                <button type="button" (click)="adduser(c.idFunction,c.name)" class="btn btn-outline-primary">
                                     Ajouter utlisateur </button>
-                                </div>
+
                             </td>
                         </tr>
                     </tbody>

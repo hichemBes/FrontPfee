@@ -2,88 +2,88 @@
 
 
 </app-general-layout>
-div class="header ">
-<div class="container-fluid">
+<div class="header ">
+    <div class="container-fluid">
 
-    <h2 style="text-align:center"> Demandes </h2>
-    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
-        <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
-            <li class="breadcrumb-item" style="text-align:center"><a href="/Home"><i class="fas fa-home"></i></a></li>
-            <li class="breadcrumb-item" style="text-align:center"><a>Demandes</a></li>
-            <li aria-current="page" class="breadcrumb-item active"> Gérer les Demandes</li>
-        </ol>
-    </nav>
-
-
+        <h2 style="text-align:center"> Demandes </h2>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
+                <li class="breadcrumb-item" style="text-align:center"><a href="/Home"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item" style="text-align:center"><a>Demandes</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Gérer les Demandes</li>
+            </ol>
+        </nav>
 
 
-</div>
-<div class="container-fluid mt-2">
-    <div class="Center">
-        <div class="card">
-            <div class="card-header">
-                <form>
-                    <div class="row align-items-center">
-                        <div class="col-4 text-left" *ngIf="!verif">
-                            <a (click)="addDemande()" class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
+
+
+    </div>
+    <div class="container-fluid mt-2">
+        <div class="Center">
+            <div class="card">
+                <div class="card-header">
+                    <form>
+                        <div class="row align-items-center">
+                            <div class="col-4 text-left" *ngIf="!verif">
+                                <a (click)="addDemande()" class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
                                     class="fas fa-plus-circle"></i></span> Ajouter un Demande  </a>
+                            </div>
+
+                            <div class="col-4">
+                                <input type="text" style="float:inline-end" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
+                            </div>
                         </div>
+                    </form>
 
-                        <div class="col-4">
-                            <input type="text" style="float:inline-end" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
-                        </div>
-                    </div>
-                </form>
+                </div>
+                <div class="table-responsive" *ngIf="verif">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" data-sort="status" class="sort"> Statut de Demande </th>
+                                <th scope="col" data-sort="status" class="sort"> Type de demande </th>
+                                <th scope="col" data-sort="status" class="sort"> Organisme </th>
 
-            </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col" data-sort="status" class="sort"> Statut de Demande </th>
-                            <th scope="col" data-sort="status" class="sort"> Type de demande </th>
-                            <th scope="col" data-sort="status" class="sort"> Organisme </th>
+                                <th scope="col" data-sort="status" class="sort">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list" *ngFor="let c of tab| paginate : { id: 'ActionTypePagination',itemsPerPage: 4, currentPage: p }">
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <ngx-avatar></ngx-avatar>
+                                        <span class="ml-4">{{c.status}}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <ngx-avatar></ngx-avatar>
+                                        <span class="ml-4">{{c.requesttype}}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <ngx-avatar></ngx-avatar>
+                                        <span class="ml-2">{{c.organisme}}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <ngx-avatar></ngx-avatar>
 
-                            <th scope="col" data-sort="status" class="sort">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="list" *ngFor="let c of tab| paginate : { id: 'ActionTypePagination',itemsPerPage: 4, currentPage: p }">
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <ngx-avatar></ngx-avatar>
-                                    <span class="ml-4">{{c.status}}</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <ngx-avatar></ngx-avatar>
-                                    <span class="ml-4">{{c.requesttype}}</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <ngx-avatar></ngx-avatar>
-                                    <span class="ml-2">{{c.organisme}}</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <ngx-avatar></ngx-avatar>
-
-                                    <button type="button" (click)="open(c.categoryId,c.categorytype)" class=" btn btn-sm btn-secondary ">
+                                        <button type="button" (click)="open(c.categoryId,c.categorytype)" class=" btn btn-sm btn-secondary ">
                                 voirDetails</button>
-                                </div>
-                            </td>
+                                    </div>
+                                </td>
 
 
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer" *ngIf="verif">
-                <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv">
-                </pagination-controls>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer" *ngIf="verif">
+                    <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv">
+                    </pagination-controls>
+                </div>
             </div>
         </div>
-    </div>

@@ -8,6 +8,9 @@ import { CategoriesComponent } from './categories/categories.component';
 import { RequestComponent } from './request/request.component';
 import { OrganismeComponent } from './organisme/organisme.component';
 import { FunctionComponent } from './function/function.component';
+import { AllrequestComponent } from './allrequest/allrequest.component';
+import { RequestDetailsComponent } from './request-details/request-details.component';
+
 
 
 
@@ -20,7 +23,9 @@ const routes: Routes = [
   { path: 'allusers', component: UsersComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'organisme', component: OrganismeComponent },
-  { path: 'allrequest', component: RequestComponent },
+  { path: 'allrequest', component: AllrequestComponent },
+  { path: 'request', component: RequestComponent },
+  { path: 'request/details/:detail', component: RequestDetailsComponent },
   { path: 'functionofuser', component: FunctionComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
@@ -29,6 +34,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
+
 
 
 
