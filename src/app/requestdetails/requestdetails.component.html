@@ -1,0 +1,58 @@
+<app-general-layout></app-general-layout>
+<div class="header ">
+    <div class="container-fluid">
+
+        <h2 style="text-align:center"> Details </h2>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
+                <li class="breadcrumb-item" style="text-align:center"><a href="/Home"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item" style="text-align:center"><a href="/allrequest">Demandes</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Détails</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="Cen">
+        <h3> Status de Demande : {{tab.status}}</h3>
+
+        <p> Description : {{tab.requestDescription}}</p>
+        <h4> Demandeur : {{tab.username}}</h4>
+
+
+        <h4> Date de Creation : {{tab.creationDate}}</h4>
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" data-sort="status" class="sort"> Piece Jointe </th>
+
+                        <th scope="col" data-sort="status" class="sort">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="list" *ngFor="let c of pieces | paginate : { id: 'ActionTypePagination',itemsPerPage: 2, currentPage: p };index as i">
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <ngx-avatar></ngx-avatar>
+                                <span class="ml-4"> Piece Numéro {{i+1}} </span>
+                            </div>
+                        </td>
+
+                        <td class="d-flex ">
+                            <div class="btn-group">
+
+                                <button type="button" (click)="getp(c.pieceId)" class="btn btn-outline-primary">Télécharger </button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf="pieces.length>2">
+            </pagination-controls>
+        </div>
+    </div>
+</div>

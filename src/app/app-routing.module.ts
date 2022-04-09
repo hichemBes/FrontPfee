@@ -9,7 +9,8 @@ import { RequestComponent } from './request/request.component';
 import { OrganismeComponent } from './organisme/organisme.component';
 import { FunctionComponent } from './function/function.component';
 import { AllrequestComponent } from './allrequest/allrequest.component';
-import { RequestDetailsComponent } from './request-details/request-details.component';
+import { RequestdetailsComponent } from './requestdetails/requestdetails.component';
+
 
 
 
@@ -25,11 +26,9 @@ const routes: Routes = [
   { path: 'organisme', component: OrganismeComponent },
   { path: 'allrequest', component: AllrequestComponent },
   { path: 'request', component: RequestComponent },
-  { path: 'request/details/:detail', component: RequestDetailsComponent },
+  { path: 'request/details/:detail', component: RequestdetailsComponent },
   { path: 'functionofuser', component: FunctionComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-
-
 ];
 
 @NgModule({

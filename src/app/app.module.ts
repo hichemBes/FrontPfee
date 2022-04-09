@@ -34,7 +34,8 @@ import { AddcategorieComponent } from './popup/addcategorie/addcategorie.compone
 import { ViewcatfunctionComponent } from './popup/viewcatfunction/viewcatfunction.component';
 import { AddcatfunctionComponent } from './popup/addcatfunction/addcatfunction.component';
 import { AllrequestComponent } from './allrequest/allrequest.component';
-import { RequestDetailsComponent } from './request-details/request-details.component';
+import { RequestdetailsComponent } from './requestdetails/requestdetails.component';
+
 
 
 
@@ -62,7 +63,7 @@ registerLocaleData(localeFr, 'fr');
     ViewcatfunctionComponent,
     AddcatfunctionComponent,
     AllrequestComponent,
-    RequestDetailsComponent,
+    RequestdetailsComponent,
 
 
   ],
