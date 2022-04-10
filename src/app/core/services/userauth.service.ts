@@ -95,4 +95,12 @@ export class UserauthService {
   getRolebyusername(username: any): Observable<string[]> {
     return this.http.get<string[]>(this.url5 + username);
   }
+  deleteRole(username, rolename) {
+    return this.http.delete('https://localhost:44377/Identity/DeleteuserRole?UserName=' + username + '&RoleName=' + rolename, { responseType: 'text' })
+  }
+
+  deletuser(id: any) {
+    return this.http.delete('https://localhost:44377/Identity/Deleteuser?id=' + id, { responseType: 'text' })
+
+  }
 }

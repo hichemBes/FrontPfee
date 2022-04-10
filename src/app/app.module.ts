@@ -35,6 +35,7 @@ import { ViewcatfunctionComponent } from './popup/viewcatfunction/viewcatfunctio
 import { AddcatfunctionComponent } from './popup/addcatfunction/addcatfunction.component';
 import { AllrequestComponent } from './allrequest/allrequest.component';
 import { RequestdetailsComponent } from './requestdetails/requestdetails.component';
+import { AddrequestComponent } from './popup/addrequest/addrequest.component';
 
 
 
@@ -64,6 +65,7 @@ registerLocaleData(localeFr, 'fr');
     AddcatfunctionComponent,
     AllrequestComponent,
     RequestdetailsComponent,
+    AddrequestComponent,
 
 
   ],

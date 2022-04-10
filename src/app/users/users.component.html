@@ -8,37 +8,96 @@
 
 
 
-        <h2 style="text-align:center"> Gérer Les utlisateurs </h2>
+        <h2 style="text-align:center"> Gérer Utlisateur et Role </h2>
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
-                <li class="breadcrumb-item" style="text-align:center"><a href="#"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item" style="text-align:center"><a>utlisateurs</a></li>
-                <li aria-current="page" class="breadcrumb-item active"> Gérer les utlisateurs </li>
+                <li class="breadcrumb-item" style="text-align:center"><a routerLink="/Home"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item" style="text-align:center"><a>Utlisateur </a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Role </li>
             </ol>
         </nav>
+
+
+
+
     </div>
 </div>
-<div class="center">
+<div class="container-fluid mt-2">
+    <div class="Center">
+        <div class="card">
+            <div class="card-header">
+                <form>
+                    <div class="row align-items-center">
+                        <div class="col-4 text-left">
+                            <a class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
+                                    class="fas fa-plus-circle"></i></span> Ajouter un Function </a>
+                        </div>
 
-    <table class="uk-table uk-table-striped">
-        <thead>
-            <tr>
-                <th>nom d'utilisateur</th>
-                <th>Email</th>
-                <th>Filliale</th>
-                <th>AjouterRole</th>
-                <th>VoirRoles</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let character of tab">
-                <td>{{ character.userName}}</td>
-                <td>{{ character.email}}</td>
-                <td>{{character.filliale}}</td>
-                <td><button type="button" class="btn btn-primary" (click)="open( character.userName)">AjouterRole</button></td>
-                <td>
-                    <button type="button" class="btn btn-primary" (click)="ViewRole (character.userName)">VoirRoles</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                        <div class="col-4">
+                            <input type="text" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" data-sort="status" class="sort"> Nom du utlisateur </th>
+                            <th scope="col" data-sort="status" class="sort"> Email</th>
+                            <th scope="col" data-sort="status" class="sort"> Filliale</th>
+
+                            <th scope="col" data-sort="status" class="sort">supprimer</th>
+                            <th scope="col" data-sort="status" class="sort">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list" *ngFor="let c of  tab  |  tableFilter:searchForm.value | paginate : { id: 'ActionTypePagination',itemsPerPage: 3, currentPage: p }">
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <ngx-avatar></ngx-avatar>
+                                    <span class="ml-4">{{c.userName}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <ngx-avatar></ngx-avatar>
+                                    <span class="ml-4">{{c.email}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <ngx-avatar></ngx-avatar>
+                                    <span class="ml-4">{{c.filliale}}</span>
+                                </div>
+                            </td>
+
+
+                            <td class="d-flex ">
+                                <div class="btn-group">
+                                    <br>
+                                    <button type="button" (click)="deleteuser(c.id)" class="btn btn-sm btn-secondary"><i
+                                        class="fas fa-trash text-danger"></i></button>
+
+
+                                </div>
+
+                            </td>
+                            <td>
+                                <ngx-avatar></ngx-avatar>
+
+                                <button type="button" (click)="open(c.userName)" class="btn btn-outline-primary">
+                                AjouterRole</button>
+                                <button type="button" (click)=" ViewRole(c.userName)" class="btn btn-outline-primary">
+                                    Voir utlisateur </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf="tab.length>2">
+                    </pagination-controls>
+                </div>
+            </div>

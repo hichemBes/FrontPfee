@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Ajouter Demande </span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="card-body">
+
+        <form [formGroup]="Request" autocomplete="off" (ngSubmit)="onSubmit()">
+            <pre></pre>
+            <div class="form-group">
+                <label>Nom du projet </label>
+                <input type="text" class="form-control" formControlName="projectName">
+
+
+
+                <div class=" d-flex flex-row-reverse">
+                    <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
+
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

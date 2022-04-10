@@ -1,31 +1,51 @@
 <div class="card">
     <div class="card-header pb-0">
-        <span class="card-title ">Gérer les Roles </span>
+        <span class="card-title "> </span>
         <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
             <span aria-hidden="true">&times;</span>
         </button>
 
 
-    </div>
-    <div class="card-body">
-        <div>
-            <h1>les roles du {{fromParent}} </h1>
-            <ul *ngFor="let c of roles">
-                <li>
-                    {{c}}
-                </li>
 
-            </ul>
+    </div>
+    <div class="table-responsive">
+        <div class="Center">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <h1>les roles de {{fromParent}} </h1>
+                    <tr>
+                        <th scope="col" data-sort="status" class="sort"> Role </th>
+
+                        <th scope="col" data-sort="status" class="sort">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="list" *ngFor="let c of roles |  paginate : { id: 'ActionTypePagination',itemsPerPage: 3, currentPage: p },index as i">
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <ngx-avatar></ngx-avatar>
+                                <span class="ml-2">{{c}}</span>
+                            </div>
+                        </td>
+
+                        <td class="d-flex align-items-center ">
+                            <div class="btn-group">
+
+                                <button type="button" (click)="delete(roles[i])" class="btn btn-sm btn-secondary"><i
+                            class="fas fa-trash text-danger"></i></button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
         </div>
-
-
-
-        <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
-
-
     </div>
-
-
-
-
+    <div class="card-footer">
+        <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf="roles.length>1">
+        </pagination-controls>
+    </div>
 </div>

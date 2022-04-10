@@ -40,7 +40,7 @@ export class AdduserComponent implements OnInit {
   submit() {
     var d = this.searchForm.value.fk_User
 
-    var c = this.fromParent.fk_Function
+    var c = this.fromParent
 
 
     var data = {

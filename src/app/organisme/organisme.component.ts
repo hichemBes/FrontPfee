@@ -28,11 +28,11 @@ export class OrganismeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getallirganisme()
+    this.getallorganisme()
     this.createSearchForm()
 
   }
-  getallirganisme() {
+  getallorganisme() {
     this.service.getAllorganisme().subscribe(data => {
 
       this.organismes = data;
@@ -64,7 +64,7 @@ export class OrganismeComponent implements OnInit {
         this.service.deleteorganisme(id).subscribe({
           next: res => {
             console.log(res)
-            this.getallirganisme()
+            this.getallorganisme()
             Swal.fire(
               {
                 toast: true,
@@ -108,7 +108,7 @@ export class OrganismeComponent implements OnInit {
             timer: 5000, title: 'Ajouté avec succées',
             icon: 'success',
           })
-        this.getallirganisme()
+        this.getallorganisme()
         modalRef.close()
       }
     })

@@ -4,6 +4,8 @@ import { UserauthService } from '../core/services/userauth.service';
 import { RequestService } from './../core/services/request.service';
 import { Req } from './../core/models/request';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddrequestComponent } from './../popup/addrequest/addrequest.component';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class RequestComponent implements OnInit {
   verif = false
   search: any
 
-  constructor(private route: Router, private req: RequestService, private sa: UserauthService, private matDialog: MatDialog) {
+  constructor(private route: Router, private req: RequestService, private modalService: NgbModal, private sa: UserauthService, private matDialog: MatDialog) {
     if (!localStorage.getItem('Token')) {
       this.route.navigate(["login"])
     }
@@ -64,6 +66,9 @@ export class RequestComponent implements OnInit {
   }
 
   addDemande() {
+
+    const config = { backdrop: true, size: 'lg' }
+    var modalRef = this.modalService.open(AddrequestComponent, config)
 
   }
   Search() {
