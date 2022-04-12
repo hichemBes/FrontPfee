@@ -1,0 +1,76 @@
+<app-general-layout></app-general-layout>
+<div class="header ">
+    <div class="container-fluid">
+
+        <h2 style="text-align:center"> Gérer type Demande </h2>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
+                <li class="breadcrumb-item" style="text-align:center">
+                    <a routerLink="/Home"><i class="fas fa-home"></i></a>
+                </li>
+                <li class="breadcrumb-item" style="text-align:center"><a>TypeDemande </a></li>
+
+            </ol>
+        </nav>
+
+
+
+
+    </div>
+    <div class="container-fluid mt-2">
+        <div class="Center">
+            <div class="card">
+                <div class="card-header">
+                    <form>
+                        <div class="row align-items-center">
+                            <div class="col-4 text-left">
+                                <a (click)="addtype()" class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
+                                        class="fas fa-plus-circle"></i></span> Ajouter un Type Demande  </a>
+                            </div>
+
+                            <div class="col-4">
+                                <input type="text" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" data-sort="status" class="sort"> Type Demande </th>
+
+                                <th scope="col" data-sort="status" class="sort">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list" *ngFor="let c of ts |tableFilter:searchForm.value | paginate : { id: 'ActionTypePagination',itemsPerPage: 3, currentPage: p }">
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <ngx-avatar></ngx-avatar>
+                                        <span class="ml-4">{{c.requestTypeName}}</span>
+                                    </div>
+                                </td>
+
+                                <td class="d-flex ">
+                                    <div class="btn-group">
+
+                                        <button type="button" (click)="delete(c.requestTypeId)" class="btn btn-sm btn-secondary"><i
+                                            class="fas fa-trash text-danger"></i></button>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf=" ts.length>1">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>

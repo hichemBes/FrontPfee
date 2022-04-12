@@ -22,7 +22,7 @@ export class OrganismeComponent implements OnInit {
   p: any
   search: any
   constructor(private service: OrganismeService, private route: Router, private modalService: NgbModal, private sa: UserauthService, private router: Router) {
-    if (this.sa.loggedIn() == false) {
+    if (this.sa.loggedIn() == false || this.sa.Role() == false) {
       this.route.navigate(["login"])
     }
   }
@@ -132,7 +132,7 @@ export class OrganismeComponent implements OnInit {
   }
   Search() {
 
-    console.log(this.search)
+
     if (this.search == "") {
       this.ngOnInit();
 

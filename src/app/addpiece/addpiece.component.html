@@ -1,0 +1,19 @@
+<h1>File Upload Using Angular 5 and ASP.NET Core 2.1</h1>
+<label class="btn btn-secondary" (click)="fileInput.value = null">
+    Choose File
+    <input
+      #fileInput
+      type="file"
+
+      style="display: none;"
+      (change)="chooseFile(fileInput.files)"
+    />
+  </label>
+
+
+<div class=" d-flex flex-row-reverse">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
+
+    <button (click)="upload()" class="btn btn-primary">Enregistrer</button>
+
+</div>

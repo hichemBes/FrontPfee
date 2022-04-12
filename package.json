@@ -31,6 +31,7 @@
     "clipboard": "^2.0.8",
     "file-saver": "^2.0.5",
     "jquery": "^3.6.0",
+    "moment": "^2.29.2",
     "ngx-avatar": "^4.1.0",
     "ngx-bootstrap": "^7.1.0",
     "ngx-pagination": "^5.1.1",

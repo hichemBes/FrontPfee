@@ -10,6 +10,7 @@ import { OrganismeComponent } from './organisme/organisme.component';
 import { FunctionComponent } from './function/function.component';
 import { AllrequestComponent } from './allrequest/allrequest.component';
 import { RequestdetailsComponent } from './requestdetails/requestdetails.component';
+import { TypereqyestComponent } from './typereqyest/typereqyest.component';
 
 
 
@@ -28,11 +29,13 @@ const routes: Routes = [
   { path: 'request', component: RequestComponent },
   { path: 'request/details/:detail', component: RequestdetailsComponent },
   { path: 'functionofuser', component: FunctionComponent },
+  { path: 'typerequest', component: TypereqyestComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
 
 
 

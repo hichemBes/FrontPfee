@@ -20,7 +20,7 @@ export class CategoriesComponent implements OnInit {
   p: any
   search: any
   constructor(private route: Router, private c: CategorieService, private sa: UserauthService, private modalService: NgbModal) {
-    if (this.sa.loggedIn() == false) {
+    if (this.sa.loggedIn() == false || this.sa.Role() == false) {
       this.route.navigate(["login"])
 
     }

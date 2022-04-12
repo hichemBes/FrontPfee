@@ -36,6 +36,9 @@ import { AddcatfunctionComponent } from './popup/addcatfunction/addcatfunction.c
 import { AllrequestComponent } from './allrequest/allrequest.component';
 import { RequestdetailsComponent } from './requestdetails/requestdetails.component';
 import { AddrequestComponent } from './popup/addrequest/addrequest.component';
+import { TypereqyestComponent } from './typereqyest/typereqyest.component';
+import { AddtyperequestComponent } from './popup/addtyperequest/addtyperequest.component';
+import { AddpieceComponent } from './addpiece/addpiece.component';
 
 
 
@@ -66,6 +69,9 @@ registerLocaleData(localeFr, 'fr');
     AllrequestComponent,
     RequestdetailsComponent,
     AddrequestComponent,
+    TypereqyestComponent,
+    AddtyperequestComponent,
+    AddpieceComponent,
 
 
   ],

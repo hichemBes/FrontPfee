@@ -12,4 +12,10 @@ export class typeRequestService {
 
 
     }
+    delete(id: any) {
+        return this._http.delete('https://localhost:44324/api/TypeRequest/deleteTypeRequest?id=' + id, { responseType: 'text' })
+    }
+    post(data: any) {
+        return this._http.post('https://localhost:44324/api/TypeRequest/posttypeRequest', data)
+    }
 }

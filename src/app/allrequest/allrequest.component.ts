@@ -39,6 +39,10 @@ export class AllrequestComponent implements OnInit {
         if (this.tab[i].status == 'InProgress') {
           this.tab[i].status = 'En Cours '
         }
+        if (this.tab[i].status == 'NotDone') {
+          this.tab[i].status = 'Pas encore Valideé '
+
+        }
       }
 
       console.log(this.tab)

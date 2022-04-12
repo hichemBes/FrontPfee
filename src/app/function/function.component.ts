@@ -6,6 +6,7 @@ import { FunctionService } from './../core/services/function.service';
 import { AddfunctionComponent } from './../popup/addfunction/addfunction.component';
 import { FonctionofuserComponent } from './../popup/fonctionofuser/fonctionofuser.component';
 import { AdduserComponent } from './../popup/adduser/adduser.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-function',
@@ -17,7 +18,11 @@ export class FunctionComponent implements OnInit {
   functioofusers: any
   p: any
   search: any
-  constructor(private sa: FunctionService, private modalService: NgbModal) { }
+  constructor(private sa: FunctionService, private modalService: NgbModal, private s: UserauthService, private route: Router) {
+    if (this.s.loggedIn() == false || this.s.Role() == false) {
+      this.route.navigate(["login"])
+    }
+  }
 
   ngOnInit(): void {
     this.getallfonctionofusers()

@@ -45,7 +45,7 @@
                             <th scope="col" data-sort="status" class="sort">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="list" *ngFor="let c of organismes | tableFilter:searchForm.value | paginate : { id: 'ActionTypePagination',itemsPerPage: 5, currentPage: p }">
+                    <tbody class="list" *ngFor="let c of organismes | tableFilter:searchForm.value | paginate : { id: 'ActionTypePagination',itemsPerPage: 3, currentPage: p }">
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">

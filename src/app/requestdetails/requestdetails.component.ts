@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from './../core/services/request.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PieceService } from './../core/services/piece.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddrequestComponent } from './../popup/addrequest/addrequest.component';
+import { AddpieceComponent } from './../addpiece/addpiece.component';
 
 @Component({
   selector: 'app-requestdetails',
@@ -13,13 +16,21 @@ export class RequestdetailsComponent implements OnInit {
   tab: any
   p: any
   pieces: any
-  constructor(private req: RequestService, private route: ActivatedRoute, private piece: PieceService) { }
+
+  constructor(private req: RequestService, private modalService: NgbModal, private route: ActivatedRoute, private piece: PieceService) { }
 
   ngOnInit(): void {
     this.de = this.route.snapshot.paramMap.get("detail")
     console.log(this.de)
     this.getrequestdetails()
     this.getallpiecejointe()
+
+  }
+  addPieces() {
+
+    const config = { backdrop: true, size: 'lg' }
+    var modalRef = this.modalService.open(AddpieceComponent, config)
+    modalRef.componentInstance.fromParent = this.de
 
   }
   getrequestdetails() {
@@ -40,6 +51,8 @@ export class RequestdetailsComponent implements OnInit {
   getallpiecejointe() {
     this.piece.get(this.de).subscribe(data => {
       this.pieces = data
+
+
       console.log(this.pieces)
     },
       err => {
