@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="col-4">
-                                <input type="text" style="float:inline-end" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
+                                <input type="text" style="float:inline-end" name="search" class="form-control" placeholder="rechercher  par type demande  " [(ngModel)]="search" (ngModelChange)="Search()">
                             </div>
                         </div>
                     </form>
@@ -52,13 +52,13 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <ngx-avatar></ngx-avatar>
-                                        <span class="ml-4">{{c.status}}</span>
+                                        <span class="ml-2">{{c.status}}</span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <ngx-avatar></ngx-avatar>
-                                        <span class="ml-4">{{c.requesttype}}</span>
+                                        <span class="ml-2">{{c.requesttype}}</span>
                                     </div>
                                 </td>
                                 <td>

@@ -16,7 +16,7 @@ export class PieceService {
     }
 
     getpiece(id: any) {
-        return this._http.get('https://localhost:44324/api/Pieces/download/' + id, { responseType: 'blob' })
+        return this._http.get('https://localhost:44324/api/Pieces/download/' + id, { responseType: 'blob', observe: 'response' })
 
 
     }

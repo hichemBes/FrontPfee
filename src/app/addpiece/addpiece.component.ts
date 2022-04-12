@@ -22,7 +22,7 @@ export class AddpieceComponent implements OnInit {
 
   }
   chooseFile(files: FileList) {
-    // ...
+
     this.selectedFile = files[0];
   }
   upload() {

@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="col-4">
-                            <input type="text" name="search" class="form-control" placeholder="rechercher">
+                            <input type="text" name="search" class="form-control" placeholder="rechercher" [(ngModel)]="search" (ngModelChange)="Search()">
                         </div>
                     </div>
                 </form>
@@ -64,7 +64,7 @@
                             <td class="d-flex ">
                                 <div class="btn-group">
 
-                                    <button type="button" (click)="getp(c.pieceId)" class="btn btn-outline-primary">Télécharger </button>
+                                    <button type="button" (click)="getp(c.pieceId,c.name)" class="btn btn-outline-primary">Télécharger </button>
                                 </div>
                             </td>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import { CategorieService } from '../core/services/categorie.service';
 import { typeRequestService } from '../core/services/typerequest.service';
 import { AddtyperequestComponent } from './../popup/addtyperequest/addtyperequest.component';
 
@@ -15,7 +16,8 @@ export class TypereqyestComponent implements OnInit {
   searchForm: FormGroup = new FormGroup({})
   p: any
   search: any
-  constructor(private s: typeRequestService, private modalService: NgbModal) { }
+  categories: any
+  constructor(private s: typeRequestService, private modalService: NgbModal, private c: CategorieService,) { }
 
   ngOnInit(): void {
     this.getall()
@@ -101,6 +103,15 @@ export class TypereqyestComponent implements OnInit {
       actionTypeName: new FormControl(),
     })
   }
+  getallCategorie() {
+    this.c.getallcategories().subscribe(data => {
+      this.categories = data
+
+    }, err => {
+      console.log(err)
+    }
+    )
+  }
   Search() {
 
 
@@ -113,4 +124,5 @@ export class TypereqyestComponent implements OnInit {
       })
     }
   }
+
 }
