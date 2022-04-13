@@ -1,6 +1,13 @@
-<h1>File Upload Using Angular 5 and ASP.NET Core 2.1</h1>
-<label class="btn btn-secondary" (click)="fileInput.value = null">
-    Choose File
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Ajouter Piéce Jointe </span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+          <span aria-hidden="true">&times;</span>
+      </button>
+        <br>
+        <br>
+        <label class="btn btn-secondary" (click)="fileInput.value = null">
+          Choisir Fichier 
     <input
       #fileInput
       type="file"
@@ -11,9 +18,9 @@
   </label>
 
 
-<div class=" d-flex flex-row-reverse">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
+        <div class=" d-flex flex-row-reverse">
+            <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
 
-    <button (click)="upload()" class="btn btn-primary">Enregistrer</button>
+            <button (click)="upload()" class="btn btn-primary">Enregistrer</button>
 
-</div>
+        </div>

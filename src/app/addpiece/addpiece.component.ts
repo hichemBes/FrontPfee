@@ -33,6 +33,7 @@ export class AddpieceComponent implements OnInit {
 
     this.p.upload(this.fromParent, this.formData).subscribe(data => {
       console.log(data)
+      this.event.emit('refresh')
     },
       err => {
         console.log(err)

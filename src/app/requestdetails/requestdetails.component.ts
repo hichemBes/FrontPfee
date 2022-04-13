@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddrequestComponent } from './../popup/addrequest/addrequest.component';
 import { AddpieceComponent } from './../addpiece/addpiece.component';
 import { FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-requestdetails',
@@ -33,7 +34,21 @@ export class RequestdetailsComponent implements OnInit {
     const config = { backdrop: true, size: 'lg' }
     var modalRef = this.modalService.open(AddpieceComponent, config)
     modalRef.componentInstance.fromParent = this.de
+    modalRef.componentInstance.event.subscribe((res) => {
+      if (res == 'refresh') {
+        Swal.fire(
+          {
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000, title: 'Ajouté avec succées',
+            icon: 'success',
+          })
+        this.getallpiecejointe()
 
+        modalRef.close()
+      }
+    })
   }
   getrequestdetails() {
     this.req.getrequestbyid(this.de).subscribe(data => {

@@ -14,17 +14,30 @@ export class AddrequestComponent implements OnInit {
   Request: FormGroup
   ts: any
   organismes: any
+
+  selectedFile: File;
   event: EventEmitter<any> = new EventEmitter()
 
   constructor(private s: typeRequestService, public activeModal: NgbActiveModal, private fb: FormBuilder, private organisme: OrganismeService) { }
-
+  formData = new FormData();
   ngOnInit(): void {
-    this.moment()
+
     this.getallorganisme()
     this.gettyprequest()
   }
+  chooseFile(files: FileList) {
+
+    this.selectedFile = files[0];
+  }
+  // upload() {
+
+
+
+  // }
   searchForm = this.fb.group({
-    fk_Organisme: ''
+    fk_Organisme: '',
+    RequestDescription: '',
+    fk_Filliale: ''
   });
   getallorganisme() {
     this.organisme.getAllorganisme().subscribe(
@@ -35,15 +48,7 @@ export class AddrequestComponent implements OnInit {
     )
 
   }
-  public uploadFile = (files) => {
-    if (files.length === 0) {
-      return;
-    }
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
 
-  }
   gettyprequest() {
     this.s.getlltyperequestList().subscribe(data => {
       this.ts = data,
@@ -52,14 +57,24 @@ export class AddrequestComponent implements OnInit {
       console.log(err)
     })
   }
-  moment() {
-    moment.locale('Fr')
-    let now = moment().format('LLLL');
+  // moment() {
+  // 
+  //   let now = moment().format('LLLL');
+  //   console.log(now)
+  //   return now
 
-    console.log(now)
-
-  }
+  // }
   submit() {
+    var d = this.searchForm.value
+    moment.locale('Fr')
+    var Fk_User = localStorage.getItem('userid')
+    let now = moment().format('LLLL');
+    d['creationDate'] = now
+    d['Fk_User'] = Fk_User
+    console.log(d)
+    this.formData = new FormData();
+    this.formData.append('files', this.selectedFile);
+    console.log(this.formData)
 
   }
 

@@ -15,11 +15,11 @@
                 
                     
                     <option value="1">-Pas de Sélection-</option>
-                    <option *ngFor="let colab  of  organismes " [value]="colab.id">{{colab.name}}</option>            
+                    <option *ngFor="let colab  of  organismes " [value]="colab.organismeId">{{colab.name}}</option>            
                     </select>
                 <br>
                 <label>TypeRequest</label>
-                <select class="form-control" formControlName="fk_request">
+                <select class="form-control" formControlName="fk_RequestType">
                 
                     
                     <option value="1">-Pas de Sélection-</option>
@@ -27,11 +27,18 @@
                     </select>
                 <br>
                 <label>Description </label>
-                <input type="text" class="form-control" name="Description" #Description="ngModel" ngModel required>
+                <input type="text" class="form-control" formControlName="RequestDescription">
                 <br>
-                <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
-                <button type="button" class="btn btn-primary" (click)="file.click()">Upload File</button>
-
+                <label class="btn btn-secondary" (click)="fileInput.value = null">
+                    Choose File
+                    <input
+                      #fileInput
+                      type="file"
+                
+                      style="display: none;"
+                      (change)="chooseFile(fileInput.files)"
+                    />
+                  </label>
                 <div class=" d-flex flex-row-reverse">
                     <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
 
