@@ -40,6 +40,8 @@ import { TypereqyestComponent } from './typereqyest/typereqyest.component';
 import { AddtyperequestComponent } from './popup/addtyperequest/addtyperequest.component';
 import { AddpieceComponent } from './addpiece/addpiece.component';
 import { AddcatgtyperequestComponent } from './addcatgtyperequest/addcatgtyperequest.component';
+import { TyperequestcatgComponent } from './typerequestcatg/typerequestcatg.component';
+import { ViewtyperequestcatComponent } from './viewtyperequestcat/viewtyperequestcat.component';
 
 
 
@@ -74,6 +76,8 @@ registerLocaleData(localeFr, 'fr');
     AddtyperequestComponent,
     AddpieceComponent,
     AddcatgtyperequestComponent,
+    TyperequestcatgComponent,
+    ViewtyperequestcatComponent,
 
 
   ],

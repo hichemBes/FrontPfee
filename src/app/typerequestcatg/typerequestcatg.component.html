@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header pb-0">
+        <span class="card-title ">Ajouter Type Demande  </span>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="activeModal.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+
+    </div>
+    <div class="card-body">
+
+        <form [formGroup]="searchForm" novalidate (ngSubmit)="submit()">
+
+            <div class="form-group">
+                <label>Nature Dossier </label>
+                <select class="form-control" formControlName="fk_CategoryId">
+                
+                    
+                    <option value="1">-Pas de Sélection-</option>
+                    <option *ngFor="let colab  of  categories " [value]="colab.categoryId">{{colab.categorytype}}</option>            
+                    </select>
+
+
+                <div class=" d-flex flex-row-reverse">
+                    <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Annuler</button> &nbsp;&nbsp;
+
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
