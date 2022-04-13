@@ -103,15 +103,7 @@ export class TypereqyestComponent implements OnInit {
       actionTypeName: new FormControl(),
     })
   }
-  getallCategorie() {
-    this.c.getallcategories().subscribe(data => {
-      this.categories = data
 
-    }, err => {
-      console.log(err)
-    }
-    )
-  }
   Search() {
 
 

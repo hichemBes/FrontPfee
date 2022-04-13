@@ -40,8 +40,9 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" data-sort="status" class="sort"> Type Demande </th>
-                                <th scope="col" data-sort="status" class="sort"> Nature Dossier </th>
 
+
+                                <th scope="col" data-sort="status" class="sort">Suprimer </th>
                                 <th scope="col" data-sort="status" class="sort">Actions</th>
                             </tr>
                         </thead>
@@ -53,12 +54,7 @@
                                         <span class="ml-4">{{c.requestTypeName}}</span>
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <ngx-avatar></ngx-avatar>
 
-                                    </div>
-                                </td>
 
                                 <td class="d-flex ">
                                     <div class="btn-group">
@@ -66,6 +62,16 @@
                                         <button type="button" (click)="delete(c.requestTypeId)" class="btn btn-sm btn-secondary"><i
                                             class="fas fa-trash text-danger"></i></button>
                                     </div>
+                                </td>
+                                <td>
+
+
+                                    <ngx-avatar></ngx-avatar>
+                                    <button type="button" class="btn btn-outline-primary">Voir Nature Dossier </button>
+                                    <button type="button" class="btn btn-outline-primary">
+                                                Ajouter Nature  Dossier </button>
+
+
                                 </td>
 
 

@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   verif;
   username;
-  constructor(public identityService: IdentityServerService, private route: Router, private oauthService: OAuthService, public authentificationService: AuthentificationService, private as: UserauthService) {
+  e;
+  constructor(private route: Router, public authentificationService: AuthentificationService, private as: UserauthService) {
     this.verif = this.as.islogged
 
     this.username = this.as.getusername()
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.e = this.as.Role()
   }
 
 

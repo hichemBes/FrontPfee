@@ -39,6 +39,7 @@ import { AddrequestComponent } from './popup/addrequest/addrequest.component';
 import { TypereqyestComponent } from './typereqyest/typereqyest.component';
 import { AddtyperequestComponent } from './popup/addtyperequest/addtyperequest.component';
 import { AddpieceComponent } from './addpiece/addpiece.component';
+import { AddcatgtyperequestComponent } from './addcatgtyperequest/addcatgtyperequest.component';
 
 
 
@@ -72,6 +73,7 @@ registerLocaleData(localeFr, 'fr');
     TypereqyestComponent,
     AddtyperequestComponent,
     AddpieceComponent,
+    AddcatgtyperequestComponent,
 
 
   ],

@@ -26,8 +26,8 @@ export class AddtyperequestComponent implements OnInit {
     this.getallCategorie()
   }
   searchForm = this.fb.group({
-    fk_User: '',
-    Type_Demande: ''
+
+    requestTypeName: ''
   });
 
   onSubmit(f: any) {
@@ -49,6 +49,13 @@ export class AddtyperequestComponent implements OnInit {
   submit() {
     var d = this.searchForm.value
     console.log(d)
+    this.s.post(d).subscribe(data => {
+      this.event.emit('refresh')
+      console.log(data)
+    }, err => {
+      console.log(err)
+    }
+    )
 
 
   }

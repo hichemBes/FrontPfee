@@ -12,16 +12,16 @@
         <form [formGroup]="searchForm" novalidate (ngSubmit)="submit()">
 
             <div class="form-group">
-                <label>Nature Dossier </label>
-                <select class="form-control" formControlName="fk_User">
+                <!-- <label>Nature Dossier </label>
+                <select class="form-control" formControlName="fk_request">
                 
                     
                     <option value="1">-Pas de Sélection-</option>
-                    <option *ngFor="let colab  of  categories " [value]="colab.categorytype">{{colab.categorytype}}</option>            
-                    </select>
+                    <option *ngFor="let colab  of  categories " [value]="colab.categoryId">{{colab.categorytype}}</option>            
+                    </select> -->
                 <label>Type Demande </label>
                 <br>
-                <input type="text" class="form-control" formControlName="Type_Demande">
+                <input type="text" class="form-control" formControlName="requestTypeName">
 
 
                 <div class=" d-flex flex-row-reverse">
