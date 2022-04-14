@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
 
     localStorage.clear();
     this.route.navigate(["login"])
+    console.clear();
 
   }
 }

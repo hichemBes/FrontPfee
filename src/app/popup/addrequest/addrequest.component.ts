@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { OrganismeService } from 'src/app/core/services/organisme.service';
+import { RequestService } from 'src/app/core/services/request.service';
 import { typeRequestService } from 'src/app/core/services/typerequest.service';
 
 @Component({
@@ -14,11 +15,12 @@ export class AddrequestComponent implements OnInit {
   Request: FormGroup
   ts: any
   organismes: any
+  e: any
 
   selectedFile: File;
   event: EventEmitter<any> = new EventEmitter()
 
-  constructor(private s: typeRequestService, public activeModal: NgbActiveModal, private fb: FormBuilder, private organisme: OrganismeService) { }
+  constructor(private s: typeRequestService, private r: RequestService, public activeModal: NgbActiveModal, private fb: FormBuilder, private organisme: OrganismeService) { }
   formData = new FormData();
   ngOnInit(): void {
 
@@ -37,7 +39,9 @@ export class AddrequestComponent implements OnInit {
   searchForm = this.fb.group({
     fk_Organisme: '',
     RequestDescription: '',
-    fk_Filliale: ''
+    fk_Filliale: '00000000-0000-0000-0000-000000000000',
+    fk_RequestType: '',
+    state: 0
   });
   getallorganisme() {
     this.organisme.getAllorganisme().subscribe(
@@ -66,16 +70,23 @@ export class AddrequestComponent implements OnInit {
   // }
   submit() {
     var d = this.searchForm.value
-    moment.locale('Fr')
     var Fk_User = localStorage.getItem('userid')
-    let now = moment().format('LLLL');
+    let now = moment().toISOString()
     d['creationDate'] = now
     d['Fk_User'] = Fk_User
     console.log(d)
     this.formData = new FormData();
     this.formData.append('files', this.selectedFile);
     console.log(this.formData)
+    this.r.postrequest(d).subscribe(
+      res => {
+        this.e = res
+        console.log(this.e)
+      }
+    ), console.error();
 
-  }
+  };
+
 
 }
+

@@ -23,4 +23,7 @@ export class PieceService {
     upload(id: any, data: any) {
         return this._http.post('https://localhost:44324/api/Pieces/uploadfile?fk=' + id, data)
     }
+    delete(id: any) {
+        return this._http.delete('https://localhost:44324/api/Pieces/Delete?id=' + id, { responseType: 'text' })
+    }
 }

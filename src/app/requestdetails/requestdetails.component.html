@@ -46,6 +46,7 @@
                         <tr>
 
                             <th scope="col" data-sort="status" class="sort"> Nom du Fichier </th>
+                            <th scope="col" data-sort="status" class="sort">Suprimer </th>
 
                             <th scope="col" data-sort="status" class="sort">Actions</th>
                         </tr>
@@ -61,6 +62,13 @@
                                     <span class="ml-2">  {{c.name}} </span>
                                 </div>
                             </td>
+                            <td>
+
+
+                                <button type="button" (click)="delete(c.pieceId)" class="btn btn-sm btn-secondary"><i
+                                            class="fas fa-trash text-danger"></i></button>
+
+                            </td>
                             <td class="d-flex ">
                                 <div class="btn-group">
 
@@ -69,7 +77,10 @@
                             </td>
 
 
+
                         </tr>
+
+
                     </tbody>
                 </table>
             </div>

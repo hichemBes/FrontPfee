@@ -53,10 +53,14 @@ export class RequestdetailsComponent implements OnInit {
   getrequestdetails() {
     this.req.getrequestbyid(this.de).subscribe(data => {
       this.tab = data
-      console.log(this.tab)
+      console.log(this.tab, typeof (this.tab))
 
-      if (this.tab.status == 'InProgress') {
+      if (this.tab.status = 'InProgress') {
         this.tab.status = 'En Cours'
+      }
+      if (this.tab.status = 'NotDone ') {
+        this.tab.status = 'Pas encore Valideé'
+
       }
       console.log(this.tab)
 
@@ -96,6 +100,56 @@ export class RequestdetailsComponent implements OnInit {
     )
 
 
+  }
+  delete(id: any) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Voulez vous supprimer cet enregistrement ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'oui, Supprimer!',
+      cancelButtonText: 'Non , Annuler!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.piece.delete(id).subscribe({
+          next: res => {
+            console.log(res)
+            this.getallpiecejointe()
+            this.getrequestdetails()
+            Swal.fire(
+              {
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000, title: 'Supprimé avec succées',
+                icon: 'success',
+              })
+          }
+
+
+        })
+
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire(
+          {
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000, title: 'Opération annlé',
+            icon: 'success',
+          })
+      }
+    })
   }
   Search() {
 

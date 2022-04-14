@@ -16,10 +16,8 @@ export class RequestService {
     getrequestbyid(id: any): Observable<[]> {
         return this._http.get<[]>('https://localhost:44324/api/Request/getById?id=' + id);
     }
-    // postrequest(){
-    //     this._http.post(){
-
-    //     }
-    // }
+    postrequest(data: any): Observable<[]> {
+        return this._http.post<[]>('https://localhost:44324/api/Request/postRequest', data)
+    }
 
 }
