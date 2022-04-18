@@ -36,7 +36,7 @@
                     </form>
 
                 </div>
-                <div class="table-responsive" *ngIf="verif">
+                <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
@@ -71,8 +71,8 @@
                                     <div class="d-flex align-items-center">
                                         <ngx-avatar></ngx-avatar>
 
-                                        <button type="button" (click)="open(c.categoryId,c.categorytype)" class=" btn btn-sm btn-secondary ">
-                                voirDetails</button>
+                                        <a routerLink="/request/details/{{c.requestId}}"> <button type="button" class="btn btn-outline-primary">
+                                voirDetails</button></a>
                                     </div>
                                 </td>
 

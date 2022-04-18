@@ -83,10 +83,13 @@ export class UserauthService {
     let token: any = localStorage.getItem('Token')
     let decodeToken = this.helper.decodeToken(token)
     let role = decodeToken.role
-    var c = role.find(ele => ele == "Admin")
-    if (c !== "Admin") {
+    // var c = role.find(ele => ele == "Admin")
+    var c = localStorage.getItem('username')
+
+    if (c !== "Hichem") {
       return false;
     }
+
     else {
       return true
     }

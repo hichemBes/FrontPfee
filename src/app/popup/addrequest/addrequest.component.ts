@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { OrganismeService } from 'src/app/core/services/organisme.service';
+import { PieceService } from 'src/app/core/services/piece.service';
 import { RequestService } from 'src/app/core/services/request.service';
 import { typeRequestService } from 'src/app/core/services/typerequest.service';
 
@@ -20,7 +21,7 @@ export class AddrequestComponent implements OnInit {
   selectedFile: File;
   event: EventEmitter<any> = new EventEmitter()
 
-  constructor(private s: typeRequestService, private r: RequestService, public activeModal: NgbActiveModal, private fb: FormBuilder, private organisme: OrganismeService) { }
+  constructor(private s: typeRequestService, private r: RequestService, public activeModal: NgbActiveModal, private fb: FormBuilder, private organisme: OrganismeService, private p: PieceService) { }
   formData = new FormData();
   ngOnInit(): void {
 
@@ -81,7 +82,16 @@ export class AddrequestComponent implements OnInit {
     this.r.postrequest(d).subscribe(
       res => {
         this.e = res
-        console.log(this.e)
+        console.log(this.e),
+          this.p.upload(this.e.requestId, this.formData).subscribe(
+            data => {
+              console.log(data)
+            }
+          ), console.error();
+        this.event.emit('refresh')
+
+
+
       }
     ), console.error();
 

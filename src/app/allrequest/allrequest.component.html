@@ -47,7 +47,7 @@
                                 <th scope="col" data-sort="status" class="sort">Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="list" *ngFor="let c of tab| paginate : { id: 'ActionTypePagination',itemsPerPage: 4, currentPage: p }">
+                        <tbody class="list" *ngFor="let c of tab| paginate : { id: 'ActionTypePagination',itemsPerPage: 3, currentPage: p }">
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
@@ -82,7 +82,7 @@
                     </table>
                 </div>
                 <div class="card-footer" *ngIf="verif">
-                    <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv">
+                    <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf="tab.length>2">
                     </pagination-controls>
                 </div>
             </div>

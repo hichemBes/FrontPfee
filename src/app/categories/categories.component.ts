@@ -8,6 +8,8 @@ import { CategorieService } from './../core/services/categorie.service';
 import { AddcategorieComponent } from './../popup/addcategorie/addcategorie.component';
 import { ViewcatfunctionComponent } from './../popup/viewcatfunction/viewcatfunction.component';
 import { AddcatfunctionComponent } from './../popup/addcatfunction/addcatfunction.component';
+import * as signalR from '@microsoft/signalr';
+import { Notification } from '../core/services/notification.service';
 
 @Component({
   selector: 'app-categories',
@@ -19,7 +21,7 @@ export class CategoriesComponent implements OnInit {
   categories: any
   p: any
   search: any
-  constructor(private route: Router, private c: CategorieService, private sa: UserauthService, private modalService: NgbModal) {
+  constructor(private route: Router, private c: CategorieService, private sa: UserauthService, private noti: Notification, private modalService: NgbModal) {
     if (this.sa.loggedIn() == false || this.sa.Role() == false) {
       this.route.navigate(["login"])
 
@@ -29,6 +31,30 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getall()
+
+    const connection = new signalR.HubConnectionBuilder()
+      .configureLogging(signalR.LogLevel.Information)
+      .withUrl('https://localhost:44324/notify')
+      .build();
+    connection.start().then(function () {
+      console.log('SignalR Connected!');
+    }).catch(function (err) {
+      console.log('error', err.toString())
+      return console.error(err.toString());
+
+    });
+
+    connection.on("BroadcastMessage", () => {
+      this.getNotification()
+      console.log("BroadcastMessage")
+    });
+  }
+  getNotification() {
+    this.noti.getNotification().subscribe(data => {
+      console.log(data)
+    }
+    )
+
   }
 
   addcategorie() {
@@ -51,12 +77,7 @@ export class CategoriesComponent implements OnInit {
 
   }
   delete(id: any) {
-    this.c.delete(id).subscribe((data) => {
-      console.log(data)
-    },
-      err => {
-        console.log(err)
-      })
+
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

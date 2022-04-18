@@ -19,5 +19,8 @@ export class RequestService {
     postrequest(data: any): Observable<[]> {
         return this._http.post<[]>('https://localhost:44324/api/Request/postRequest', data)
     }
+    getrequestuser(id: any): Observable<[]> {
+        return this._http.get<[]>('https://localhost:44324/api/Request/getbyuser?userid=' + id);
+    }
 
 }

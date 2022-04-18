@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RequestService } from '../core/services/request.service';
 import { UserauthService } from '../core/services/userauth.service';
+import * as signalR from '@microsoft/signalr';
 
 @Component({
   selector: 'app-allrequest',
@@ -28,7 +29,24 @@ export class AllrequestComponent implements OnInit {
     this.verif = this.sa.Role()
     console.log(this.verif)
     this.getallrequest()
+
+    const connection = new signalR.HubConnectionBuilder()
+      .configureLogging(signalR.LogLevel.Information)
+      .withUrl('https://localhost:44324/notify')
+      .build();
+    connection.start().then(function () {
+      console.log('SignalR Connected!');
+    }).catch(function (err) {
+      console.log('error', err.toString())
+      return console.error(err.toString());
+
+    });
+
+    connection.on("BroadcastMessage", () => {
+    });
   }
+
+
   getallrequest() {
     this.req.getllrequest().subscribe(data => {
       this.tab = data

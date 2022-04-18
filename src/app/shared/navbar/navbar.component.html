@@ -15,15 +15,18 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="ni ni-bell-55"></i>
+                        <i class="fa fa-bell  has-badge" style="cursor: pointer;"></i><span class="has-badge" style="color: red;">{{count}}</span>
                     </a>
+
                     <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
                         <!-- Dropdown header -->
+
                         <div class="px-3 py-3">
-                            <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">0</strong> notifications.
+                            <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">{{count}}</strong> notifications.
                             </h6>
+
                         </div>
-                        <!-- List group -->
+
 
                         <!-- View all -->
                         <!-- <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a> -->
