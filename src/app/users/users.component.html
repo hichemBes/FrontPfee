@@ -1,6 +1,6 @@
-<app-general-layout>
+<!-- <app-general-layout>
 
-</app-general-layout>
+</app-general-layout> -->
 
 <div class="header ">
     <div class="container-fluid">
@@ -42,7 +42,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col" data-sort="status" class="sort"> Nom du utlisateur </th>
-                            <th scope="col" data-sort="status" class="sort"> Email</th>
+                            <th scope="col" data-sort="status" class="sort"> Email utlisateur </th>
                             <th scope="col" data-sort="status" class="sort"> Filliale</th>
 
                             <th scope="col" data-sort="status" class="sort">supprimer</th>
@@ -54,19 +54,19 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <ngx-avatar></ngx-avatar>
-                                    <span class="ml-4">{{c.userName}}</span>
+                                    <span class="ml-1">{{c.userName}}</span>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <ngx-avatar></ngx-avatar>
-                                    <span class="ml-4">{{c.email}}</span>
+                                    <span class="ml-1">{{c.email}}</span>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <ngx-avatar></ngx-avatar>
-                                    <span class="ml-4">{{c.filliale}}</span>
+                                    <span class="ml-2">{{c.filliale}}</span>
                                 </div>
                             </td>
 
@@ -94,7 +94,7 @@
                     </tbody>
                 </table>
                 <div class="card-footer">
-                    <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf="tab.length>2">
+                    <pagination-controls id="ActionTypePagination" class="my-pagination text-right" (pageChange)="p = $event" previousLabel="Prec" nextLabel="Suiv" *ngIf="l>2">
                     </pagination-controls>
                 </div>
             </div>

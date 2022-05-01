@@ -1,12 +1,56 @@
-<app-general-layout></app-general-layout>
 <div>
 
-
-
     <body>
+        <h1 style="text-align:center">
+            Bienvenue {{username}}
+        </h1>
+        <!-- <h1 style="text-align:center">
+            Bienvenue {{username}}
+        </h1>
+        <div class="card-group">
+            <div class="card">
 
-        <p style="text-align:center">Bienvenue </p>
-        <p style="text-align:center">{{username}}</p>
+                <div class="card-body-border-primary ">
+                    <h3 class="card-title">Nombre Totale de Demande lanceé </h3>
+                    <br>
+                    <br>
+                    <h2 class="n">{{total}}</h2>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+            <div class="card">
+
+                <div class="card-body-border-primary">
+                    <h3 class="card-title">Nombre DE Demande Pas encore Valideé</h3>
+                    <br>
+                    <br>
+                    <h2 class="n">{{notDone}}</h2>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+            <div class="card">
+
+                <div class="card-body-border-primary">
+                    <h3 class="card-title">Nombre De Demande EN Cours du Traitement</h3>
+                    <br>
+                    <br>
+                    <h2 class="n">{{Cours}}</h2>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+        </div> -->
+        <div style="width: 600px;">
+            <canvas baseChart [datasets]="data" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend" [type]="chartType"></canvas>
+        </div>
+
+
+
     </body>
 
 </div>

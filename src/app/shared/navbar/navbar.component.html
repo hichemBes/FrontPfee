@@ -15,16 +15,32 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-bell  has-badge" style="cursor: pointer;"></i><span class="has-badge" style="color: red;">{{count}}</span>
+                        <i class="fa fa-bell  has-badge" style="cursor: pointer;"></i><span class="has-badge">{{count2}}</span>
                     </a>
+
 
                     <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
                         <!-- Dropdown header -->
 
                         <div class="px-3 py-3">
-                            <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">{{count}}</strong> notifications.
+                            <h6 class="text-sm text-muted m-0">Vous avez <strong class="text-primary">{{count}}</strong> notifications.
                             </h6>
 
+                        </div>
+                        <!-- List group -->
+                        <div class="list-group list-group-flush">
+                            <a href="#!" class="list-group-item list-group-item-action">
+                                <div class="row align-items-center" *ngFor="let c of notification">
+
+                                    <br>
+
+
+                                    <a routerLink="/request/details/{{c.requestId}}" (click)="delete()">{{c.message}}</a>
+                                    <br>
+
+                                </div>
+
+                            </a>
                         </div>
 
 
@@ -39,10 +55,10 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <!-- <img alt="Image placeholder" src="assets/img/theme/team-2-800x800.jpg"> -->
-                                <img *ngIf="e" onerror="" src="assets/img/theme/f.jpg" alt="Image placeholder" />
-                                <img *ngIf="!e" onerror="" src="assets/img/theme/team-2-800x800.jpg" alt="Image placeholder" />
-                            </span>
+                                    <!-- <img alt="Image placeholder" src="assets/img/theme/team-2-800x800.jpg"> -->
+                                    <img *ngIf="verif" onerror="" src="assets/img/theme/f.jpg" alt="Image placeholder" />
+                                    <img *ngIf="!verif" onerror="" src="assets/img/theme/team-2-800x800.jpg" alt="Image placeholder" />
+                                </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">{{username}}</span>
                             </div>

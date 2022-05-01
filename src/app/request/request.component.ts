@@ -9,6 +9,7 @@ import { AddrequestComponent } from './../popup/addrequest/addrequest.component'
 import Swal from 'sweetalert2';
 
 
+
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
@@ -19,6 +20,7 @@ export class RequestComponent implements OnInit {
   p: any;
   verif = false
   search: any
+  conut: any
 
   constructor(private route: Router, private req: RequestService, private modalService: NgbModal, private sa: UserauthService, private matDialog: MatDialog) {
     if (!localStorage.getItem('Token')) {
@@ -56,12 +58,20 @@ export class RequestComponent implements OnInit {
     var d = localStorage.getItem('userid')
     this.req.getrequestuser(d).subscribe(data => {
       this.tab = data
-      let request: Req
 
-      request = this.tab
+
+      this.conut = this.tab.length
       for (var i in this.tab) {
         if (this.tab[i].status == 'InProgress') {
-          this.tab[i].status = 'En Cours '
+          this.tab[i].status = 'En attente validation Siége '
+        }
+        if (this.tab[i].status == 'NotDone') {
+          this.tab[i].status = 'Pas encore Valideé de responsable Filliale '
+
+        }
+        if (this.tab[i].status == 'waitingvalidation') {
+          this.tab[i].status = 'valider par responsable Filliale '
+
         }
       }
 

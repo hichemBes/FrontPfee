@@ -19,6 +19,7 @@ import { Notification } from '../core/services/notification.service';
 export class CategoriesComponent implements OnInit {
   searchForm: FormGroup = new FormGroup({})
   categories: any
+  length: any
   p: any
   search: any
   constructor(private route: Router, private c: CategorieService, private sa: UserauthService, private noti: Notification, private modalService: NgbModal) {
@@ -32,22 +33,22 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.getall()
 
-    const connection = new signalR.HubConnectionBuilder()
-      .configureLogging(signalR.LogLevel.Information)
-      .withUrl('https://localhost:44324/notify')
-      .build();
-    connection.start().then(function () {
-      console.log('SignalR Connected!');
-    }).catch(function (err) {
-      console.log('error', err.toString())
-      return console.error(err.toString());
+    // const connection = new signalR.HubConnectionBuilder()
+    //   .configureLogging(signalR.LogLevel.Information)
+    //   .withUrl('https://localhost:44324/notify')
+    //   .build();
+    // connection.start().then(function () {
+    //   console.log('SignalR Connected!');
+    // }).catch(function (err) {
+    //   console.log('error', err.toString())
+    //   return console.error(err.toString());
 
-    });
+    // });
 
-    connection.on("BroadcastMessage", () => {
-      this.getNotification()
-      console.log("BroadcastMessage")
-    });
+    // connection.on("BroadcastMessage", () => {
+    //   this.getNotification()
+    //   console.log("BroadcastMessage")
+    // });
   }
   getNotification() {
     this.noti.getNotification().subscribe(data => {
@@ -132,6 +133,7 @@ export class CategoriesComponent implements OnInit {
   getall() {
     this.c.getallcategories().subscribe(data => {
       this.categories = data
+      this.length = this.categories.length
 
     }, err => {
       console.log(err)

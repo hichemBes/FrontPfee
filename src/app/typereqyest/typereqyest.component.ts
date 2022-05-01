@@ -17,6 +17,7 @@ export class TypereqyestComponent implements OnInit {
   ts: any
   searchForm: FormGroup = new FormGroup({})
   p: any
+  l: any
   search: any
   categories: any
   constructor(private s: typeRequestService, private modalService: NgbModal, private c: CategorieService,) { }
@@ -71,7 +72,7 @@ export class TypereqyestComponent implements OnInit {
   getall() {
     this.s.getlltyperequestList().subscribe(data => {
       this.ts = data
-
+      this.l = this.ts.length
     }, err => {
       console.log(err)
     })

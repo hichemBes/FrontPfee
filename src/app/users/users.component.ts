@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -19,6 +20,7 @@ export class UsersComponent implements OnInit {
   c: any
   p: any
   search: any
+  l;
   constructor(private modalService: NgbModal, private sa: UserauthService, private route: Router, private matDialog: MatDialog) {
     if (!localStorage.getItem('Token')) {
       this.route.navigate(["login"])
@@ -40,6 +42,7 @@ export class UsersComponent implements OnInit {
     this.sa.getallusers().subscribe(data => {
 
       this.tab = data;
+      this.l = this.tab.length
       console.log(this.tab)
 
 
@@ -167,5 +170,3 @@ export class UsersComponent implements OnInit {
 
   }
 }
-
-

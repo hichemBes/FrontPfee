@@ -15,11 +15,16 @@ import Swal from 'sweetalert2';
 })
 export class RequestdetailsComponent implements OnInit {
   de: any
+  status: any
+  username: any
   tab: any
   p: any
   pieces: any
+  l: any
+  Description: any
   searchForm: FormGroup = new FormGroup({})
   search: any
+  creationDate: any
   constructor(private req: RequestService, private modalService: NgbModal, private route: ActivatedRoute, private piece: PieceService) { }
 
   ngOnInit(): void {
@@ -53,14 +58,25 @@ export class RequestdetailsComponent implements OnInit {
   getrequestdetails() {
     this.req.getrequestbyid(this.de).subscribe(data => {
       this.tab = data
+      this.Description = this.tab.requestDescription
+      this.username = this.tab.username
+      this.creationDate = this.tab.creationDate
+      this.status = this.tab.status
       console.log(this.tab, typeof (this.tab))
 
-      if (this.tab.status = 'InProgress') {
-        this.tab.status = 'En Cours'
-      }
-      if (this.tab.status = 'NotDone ') {
-        this.tab.status = 'Pas encore Valideé'
+      if (this.status == 'InProgress') {
+        this.status = 'En attente validation Siége'
 
+      }
+      if (this.tab.status == 'NotDone') {
+        this.status = 'Pas encore Valideé de responsable Filliale'
+
+        console.log(this.status)
+      }
+      if (this.tab.status == 'waitingvalidation') {
+        this.status = 'valider par responsable Filliale'
+
+        console.log(this.status)
       }
       console.log(this.tab)
 
@@ -72,6 +88,8 @@ export class RequestdetailsComponent implements OnInit {
   getallpiecejointe() {
     this.piece.get(this.de).subscribe(data => {
       this.pieces = data
+      this.l = this.pieces.length
+
 
 
       console.log(this.pieces)

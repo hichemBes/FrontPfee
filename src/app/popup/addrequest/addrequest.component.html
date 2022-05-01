@@ -18,7 +18,7 @@
                     <option *ngFor="let colab  of  organismes " [value]="colab.organismeId">{{colab.name}}</option>            
                     </select>
                 <br>
-                <label>TypeRequest</label>
+                <label>Type Demande </label>
                 <select class="form-control" formControlName="fk_RequestType">
                 
                     
@@ -30,7 +30,7 @@
                 <input type="text" class="form-control" formControlName="RequestDescription">
                 <br>
                 <label class="btn btn-secondary" (click)="fileInput.value = null">
-                    Choose File
+                    Choisir Fichier
                     <input
                       #fileInput
                       type="file"

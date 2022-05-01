@@ -39,8 +39,11 @@ export class LoginComponent implements OnInit {
 
           this.sa.savelocal(data.username, res)
 
+        this.route.navigate(["Home"]).then(() => {
+          window.location.reload();
+        })
 
-        this.route.navigate(["Home"])
+
       },
       error => {
         (error === 'Unauthorized')

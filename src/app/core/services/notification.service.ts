@@ -13,4 +13,11 @@ export class Notification {
     getNotification() {
         return this._http.get('https://localhost:44324/Find')
     }
+    getbyuser(id: any): Observable<any> {
+        return this._http.get<[]>('https://localhost:44324/findbyuser?id=' + id)
+    }
+    deleteNotification(id: any) {
+        return this._http.delete('https://localhost:44324/Delete?id=' + id, { responseType: 'text' })
+    }
+
 }

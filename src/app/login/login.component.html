@@ -3,7 +3,7 @@
         <div class="uk-margin">
             <div class="uk-inline">
                 <span class="uk-form-icon" uk-icon="icon: user"></span>
-                <input class="uk-input" type="text" name="username" placeholder="username" #username="ngModel" ngModel required>
+                <input class="uk-input" type="text" name="username" placeholder="Nom" #username="ngModel" ngModel required>
                 <p class="alert alert-danger" *ngIf="username.errors?.required && username.touched">username required </p>
             </div>
             <br>
@@ -14,14 +14,14 @@
         <div class="uk-margin">
             <div class="uk-inline">
                 <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                <input class="uk-input" type="password" name="password" placeholder="password" #password="ngModel" ngModel required minlength="8">
+                <input class="uk-input" type="password" name="password" placeholder="Mot de passe" #password="ngModel" ngModel required minlength="8">
                 <p class="alert alert-danger" *ngIf="password.errors?.required && password.touched">password required </p>
             </div>
         </div>
 
 
         <div class="alert alert-danger" *ngIf="messageErorr">{{messageErorr}}</div>
-        <button type="submit" class="btn btn-outline-primary" [disabled]="f.invalid">Login</button>
+        <button type="submit" class="btn btn-outline-primary" [disabled]="f.invalid">Connecter</button>
 
     </form>
     <br>

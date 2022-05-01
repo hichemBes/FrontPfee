@@ -1,8 +1,8 @@
 <div class="wrapper">
-    <app-sidebar></app-sidebar>
+    <app-sidebar *ngIf="verif"></app-sidebar>
     <div class="main">
         <!-- Top navbar -->
-        <app-navbar></app-navbar>
+        <app-navbar *ngIf="verif"></app-navbar>
         <!-- Pages -->
 
         <div class="container-fluid">

@@ -5,13 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { NgbActiveModal, NgbModalModule, } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OAuthModule } from 'angular-oauth2-oidc';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AvatarModule } from 'ngx-avatar';
 import { registerLocaleData } from '@angular/common';
@@ -42,7 +41,9 @@ import { AddpieceComponent } from './addpiece/addpiece.component';
 import { AddcatgtyperequestComponent } from './addcatgtyperequest/addcatgtyperequest.component';
 import { TyperequestcatgComponent } from './typerequestcatg/typerequestcatg.component';
 import { ViewtyperequestcatComponent } from './viewtyperequestcat/viewtyperequestcat.component';
+import { RequestWaitingvalidationComponent } from './request-waitingvalidation/request-waitingvalidation.component';
 
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -78,12 +79,14 @@ registerLocaleData(localeFr, 'fr');
     AddcatgtyperequestComponent,
     TyperequestcatgComponent,
     ViewtyperequestcatComponent,
+    RequestWaitingvalidationComponent,
 
 
   ],
   entryComponents: [AddroleComponent, ViewroleComponent, AddorganismeComponent],
   imports: [
     BrowserModule,
+    NgChartsModule,
 
     AppRoutingModule,
     MatDialogModule,
@@ -94,7 +97,6 @@ registerLocaleData(localeFr, 'fr');
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    OAuthModule.forRoot(),
     NgxPaginationModule,
     MatTabsModule,
     MatSlideToggleModule,

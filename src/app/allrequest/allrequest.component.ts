@@ -11,10 +11,10 @@ import * as signalR from '@microsoft/signalr';
   styleUrls: ['./allrequest.component.scss']
 })
 export class AllrequestComponent implements OnInit {
-
+  lentgh: any
   tab: any;
   p: any;
-  verif = false
+  verif2 = false
   search: any
 
   constructor(private route: Router, private req: RequestService, private sa: UserauthService, private matDialog: MatDialog) {
@@ -24,32 +24,33 @@ export class AllrequestComponent implements OnInit {
     if (this.sa.loggedIn() == false) {
       this.route.navigate(["login"])
     }
+    this.getallrequest()
   }
   ngOnInit(): void {
-    this.verif = this.sa.Role()
-    console.log(this.verif)
-    this.getallrequest()
+    this.verif2 = this.sa.Role()
+    console.log(this.verif2)
 
-    const connection = new signalR.HubConnectionBuilder()
-      .configureLogging(signalR.LogLevel.Information)
-      .withUrl('https://localhost:44324/notify')
-      .build();
-    connection.start().then(function () {
-      console.log('SignalR Connected!');
-    }).catch(function (err) {
-      console.log('error', err.toString())
-      return console.error(err.toString());
 
-    });
+    //   const connection = new signalR.HubConnectionBuilder()
+    //     .configureLogging(signalR.LogLevel.Information)
+    //     .withUrl('https://localhost:44324/notify')
+    //     .build();
+    //   connection.start().then(function () {
+    //     console.log('SignalR Connected!');
+    //   }).catch(function (err) {
+    //     console.log('error', err.toString())
+    //     return console.error(err.toString());
 
-    connection.on("BroadcastMessage", () => {
-    });
+    //   });
+
+    //   connection.on("BroadcastMessage", () => {
+    //   });
+
   }
-
-
   getallrequest() {
     this.req.getllrequest().subscribe(data => {
       this.tab = data
+      this.lentgh = this.tab.length
 
 
 
@@ -59,6 +60,10 @@ export class AllrequestComponent implements OnInit {
         }
         if (this.tab[i].status == 'NotDone') {
           this.tab[i].status = 'Pas encore Valideé '
+
+        }
+        if (this.tab[i].status == 'waitingvalidation') {
+          this.tab[i].status = 'valider par responsable Filliale '
 
         }
       }
@@ -90,7 +95,7 @@ export class AllrequestComponent implements OnInit {
   Search() {
 
     if (this.search == "") {
-      this.ngOnInit();
+      this.getallrequest();
 
     } else {
       this.tab = this.tab.filter(res => {

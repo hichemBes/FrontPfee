@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class RequestService {
+    headers = { responseType: "text" }
+
     constructor(private _http: HttpClient) { }
     getllrequest(): Observable<[]> {
         return this._http.get<[]>(environment.locall + 'api/Request/getallrequest');
@@ -22,5 +24,21 @@ export class RequestService {
     getrequestuser(id: any): Observable<[]> {
         return this._http.get<[]>('https://localhost:44324/api/Request/getbyuser?userid=' + id);
     }
+    getwaitingvalidation(): Observable<[]> {
+        return this._http.get<[]>("https://localhost:44324/api/Request/waitingvalidation");
+    }
+    getNotDone(): Observable<[]> {
+        return this._http.get<[]>("https://localhost:44324/api/Request/getstatusNotDone");
+    }
+    getstatitcs(id: any): Observable<[]> {
+        return this._http.get<[]>("https://localhost:44324/api/Request/statitcs?id=" + id)
+    }
+    updaterquest(data: any) {
+        return this._http.put("https://localhost:44324/api/Request/updateRequest", data, { responseType: "text" })
+
+    }
+
+
+
 
 }
