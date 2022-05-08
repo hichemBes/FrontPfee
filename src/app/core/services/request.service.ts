@@ -37,8 +37,10 @@ export class RequestService {
         return this._http.put("https://localhost:44324/api/Request/updateRequest", data, { responseType: "text" })
 
     }
-
-
-
-
+    getinprogress() {
+        return this._http.get<[]>("https://localhost:44324/api/Request/getstatusInProgress")
+    }
 }
+
+
+

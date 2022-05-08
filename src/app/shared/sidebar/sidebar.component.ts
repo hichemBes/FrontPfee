@@ -11,6 +11,7 @@ export class SidebarComponent implements OnInit {
   verif = false
   responsable = false;
   c: any
+  validateur = false;
   constructor(private sa: UserauthService) { }
 
   ngOnInit(): void {
@@ -18,6 +19,11 @@ export class SidebarComponent implements OnInit {
     if (localStorage.getItem("Role") == "responsable") {
       console.log('aaaa')
       this.responsable = true
+    }
+    if (localStorage.getItem("Role") == "validateur") {
+      console.log('aaaa')
+      this.validateur = true
+      console.log(this.validateur)
     }
   }
 }

@@ -95,8 +95,20 @@ export class NavbarComponent implements OnInit {
       console.log(this.notification)
     })
   }
-  delete() {
+  delete(id) {
     console.log("log this iiiii")
+    this.noti.deleteNotification(id).subscribe((data) => {
+
+      console.log(data)
+      this.getNotificationbyuser()
+    },
+      (err) => {
+        console.log(err)
+
+      }
+
+
+    )
   }
   async getNotificationbyuser() {
     var id = localStorage.getItem("userid")

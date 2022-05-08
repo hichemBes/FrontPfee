@@ -12,9 +12,9 @@ import { AllrequestComponent } from './allrequest/allrequest.component';
 import { RequestdetailsComponent } from './requestdetails/requestdetails.component';
 import { TypereqyestComponent } from './typereqyest/typereqyest.component';
 import { RequestWaitingvalidationComponent } from './request-waitingvalidation/request-waitingvalidation.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 
-
-
+import { FinalValidationComponent } from './final-validation/final-validation.component';
 
 
 
@@ -32,10 +32,14 @@ const routes: Routes = [
   { path: 'typerequest', component: TypereqyestComponent },
   { path: 'waitingvalidation', component: RequestWaitingvalidationComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'Validation', component: FinalValidationComponent },
+  { path: 'Chat', component: ChatRoomComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
+
 
 
 

@@ -123,7 +123,7 @@ export class RequestComponent implements OnInit {
 
     } else {
       this.tab = this.tab.filter(res => {
-        return res.status.toLowerCase().match(this.search.toLowerCase())
+        return res.requesttype.toLowerCase().match(this.search.toLowerCase())
       })
     }
 

@@ -138,7 +138,7 @@
                 </li>
                 <li class="nav-item" *ngIf="verif">
                     <a routerLinkActive="active" routerLink="/functionofuser" class="nav-link">
-                        <i class="fas fa-file-alt"></i> Fonctions
+                        <i class="fas fa-plus-circle"></i> Fonctions
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!verif">
@@ -155,13 +155,22 @@
                             <i class="fas fa-list"></i> Attente de validation
                         </a>
                     </li>
-
-                    <li class="nav-item" *ngIf="verif">
-                        <a routerLinkActive="active" class="nav-link" routerLink="/allusers">
-                            <i class="fas fa-list"></i> utlisateurs
+                    <li class="nav-item" *ngIf="validateur">
+                        <a routerLinkActive="active" class="nav-link" routerLink="/Validation">
+                            <i class="fas fa-list"></i> Valider Demande
                         </a>
                     </li>
 
+                    <li class="nav-item" *ngIf="verif">
+                        <a routerLinkActive="active" class="nav-link" routerLink="/allusers">
+                            <i class="fas fa-users"></i> utlisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLinkActive="active" class="nav-link" routerLink="/Chat">
+                            <i class="fas fa-users"></i> Discussion
+                        </a>
+                    </li>
 
 
             </ul>

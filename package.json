@@ -39,6 +39,8 @@
     "ngx-avatar": "^4.1.0",
     "ngx-bootstrap": "^7.1.0",
     "ngx-pagination": "^5.1.1",
+    "pusher": "^5.1.0-beta",
+    "pusher-js": "^7.1.0-beta",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.3.10",
     "tslib": "^2.3.0",

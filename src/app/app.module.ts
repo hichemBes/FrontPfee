@@ -44,6 +44,10 @@ import { ViewtyperequestcatComponent } from './viewtyperequestcat/viewtypereques
 import { RequestWaitingvalidationComponent } from './request-waitingvalidation/request-waitingvalidation.component';
 
 import { NgChartsModule } from 'ng2-charts';
+import { MyDoughnutChartComponent } from './my-doughnut-chart/my-doughnut-chart.component';
+import { FinalValidationComponent } from './final-validation/final-validation.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
+
 
 
 
@@ -80,6 +84,9 @@ registerLocaleData(localeFr, 'fr');
     TyperequestcatgComponent,
     ViewtyperequestcatComponent,
     RequestWaitingvalidationComponent,
+    MyDoughnutChartComponent,
+    FinalValidationComponent,
+    ChatRoomComponent,
 
 
   ],
