@@ -4,12 +4,12 @@
 
 
 
-        <h2 style="text-align:center"> Gérer Fonction </h2>
+        <h2 style="text-align:center"> Liste des Fonctions </h2>
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
                 <li class="breadcrumb-item" style="text-align:center"><a routerLink="/Home"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item" style="text-align:center"><a>Fonctions</a></li>
-                <li aria-current="page" class="breadcrumb-item active"> Dossier </li>
+                <li class="breadcrumb-item" style="text-align:center"><a>Liste des Fonctions</a></li>
+                <li aria-current="page" class="breadcrumb-item active"> Gérer Fonctions </li>
             </ol>
         </nav>
 
@@ -26,7 +26,7 @@
                     <div class="row align-items-center">
                         <div class="col-4 text-left">
                             <a (click)="addFunction()" class="btn btn-outline-primary"><span class="btn-inner--icon" ><i
-                                    class="fas fa-plus-circle"></i></span> Ajouter  Function </a>
+                                    class="fas fa-plus-circle"></i></span> Ajouter  Fonction </a>
                         </div>
 
                         <div class="col-4">
@@ -40,7 +40,7 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col" data-sort="status" class="sort"> Nom du Function </th>
+                            <th scope="col" data-sort="status" class="sort"> Nom du Fonction </th>
                             <th scope="col" data-sort="status" class="sort"> Label du Function </th>
 
                             <th scope="col" data-sort="status" class="sort">supprimer</th>
@@ -76,9 +76,9 @@
                                 <ngx-avatar></ngx-avatar>
 
                                 <button type="button" (click)="open(c.idFunction,c.name)" class="btn btn-outline-primary">
-                                voirutlisateurs</button>
+                                Voir utlisateurs</button>
                                 <button type="button" (click)="adduser(c.idFunction,c.name)" class="btn btn-outline-primary">
-                                    Ajouter utlisateur </button>
+                                    Affecter  utlisateur </button>
 
                             </td>
                         </tr>

@@ -47,6 +47,9 @@ import { NgChartsModule } from 'ng2-charts';
 import { MyDoughnutChartComponent } from './my-doughnut-chart/my-doughnut-chart.component';
 import { FinalValidationComponent } from './final-validation/final-validation.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
+// MDB Angular Free
+// MDB Angular Pro
+
 
 
 

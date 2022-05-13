@@ -12,6 +12,10 @@ export class functionofuserService {
         return this._http.get('https://localhost:44324/api/FunctionofUser/getfonctionobyid?Id=' + id)
 
     }
+    getallfunctioofuser2(id: any) {
+        return this._http.get('https://localhost:44324/api/FunctionofUser/getfonctionobyuser?IdUser=' + id)
+
+    }
     postfunctionuser(data) {
         return this._http.post('https://localhost:44324/api/FunctionofUser/postfunctionofuser', data)
     }

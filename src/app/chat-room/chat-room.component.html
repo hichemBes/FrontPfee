@@ -2,15 +2,6 @@
     <div class="container-fluid">
 
         <h2 style="text-align:center"> Disscusion Groupe </h2>
-        <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" class="C">
-            <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="float: right;">
-                <li class="breadcrumb-item" style="text-align:center"><a routerLink="/Home"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item" style="text-align:center"><a>Chat-Room</a></li>
-
-            </ol>
-        </nav> -->
-
-
 
     </div>
 
@@ -29,6 +20,6 @@
             </div>
         </div>
         <form (submit)="submit()">
-            <input class="form-control" placeholder="Tapez  un message " [value]="message" (change)="message = $event.target.value" />
+            <input class="form-control" placeholder="Tapez  un message . . . " [value]="message" (change)="message = $event.target.value" />
         </form>
     </div>

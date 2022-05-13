@@ -35,7 +35,9 @@
                                     <br>
 
 
-                                    <a routerLink="/request/details/{{c.requestId}}" (click)="delete(c.id)">{{c.message}}</a>
+                                    <span>  <a routerLink="/request/details/{{c.requestId}}" (click)="delete(c.id)">{{c.message}}</a>
+                                   
+                                  </span>
                                     <br>
 
                                 </div>
@@ -70,10 +72,15 @@
                         </div>
 
                         <div class="dropdown-divider"></div>
+
+
+
+
                         <a class="dropdown-item" routerLink="login" (click)="logOut()">
                             <i class="ni ni-user-run"></i>
                             <span>Déconexion </span>
                         </a>
+
                     </div>
                 </li>
             </ul>

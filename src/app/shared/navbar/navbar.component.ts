@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import * as signalR from '@microsoft/signalr';
 import { Notification } from 'src/app/core/services/notification.service';
 import { Observable } from 'rxjs';
+import { functionofuserService } from './../../core/services/functionofuser.service.';
 
 @Component({
   selector: 'app-navbar',
@@ -17,13 +18,15 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
   notification: any
   function;
+  functionofuser;
+  nameFunction;
   verif;
   username;
   count
   e;
   count2;
 
-  constructor(private route: Router, private noti: Notification, private as: UserauthService) {
+  constructor(private route: Router, private noti: Notification, private as: UserauthService, private f: functionofuserService) {
 
     this.isLoggedIn = this.as.isLoggedIn();
     this.isLoggedIn.subscribe(data => {
@@ -37,10 +40,28 @@ export class NavbarComponent implements OnInit {
     this.function = localStorage.getItem("Role");
 
 
+
+
+
+  }
+  getfunctionofuser() {
+    var id = localStorage.getItem("userid")
+    this.f.getallfunctioofuser2(id).subscribe(
+      data => {
+        console.log(data)
+        this.functionofuser = data;
+        this.nameFunction = this.functionofuser.nameFunction;
+
+      },
+      err => {
+        console.log(err)
+      }
+    )
+
   }
 
-
   ngOnInit(): void {
+    this.getfunctionofuser()
     this.verif = this.as.Role()
     console.log(this.function)
 
